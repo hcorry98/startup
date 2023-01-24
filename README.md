@@ -1,5 +1,5 @@
 
-# startup
+# startup CS 260
 
 ## The Start Up Application for CS 260
 
