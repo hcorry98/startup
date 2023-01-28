@@ -13,3 +13,13 @@ I’ve come up with this app that allows teams to divide tasks to more easily ma
 The mascot and logo for the app is an alligator named Del.
 
 Design sketches can be found at: https://ninjamock.com/s/NV2TVKx
+
+**Key Features:**
+- Secure login through HTTPS
+- Make a new project
+- Add tasks to project
+- Assign tasks to group members
+- Real-time notification when group member completes a task
+- Progress displayed for each project
+- Manage multiple projects at once
+- Persistently stores tasks info
