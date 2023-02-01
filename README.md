@@ -1,5 +1,8 @@
 ## The Start Up Application for CS 260
 
+Domain:
+delligator.link
+
 Web Server IP:
 18.217.204.184
 
