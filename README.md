@@ -1,5 +1,11 @@
 ## The Start Up Application for CS 260
 
+Web Server IP:
+18.217.204.184
+
+Command to SSH:
+ssh -i [key pair file] ubuntu@[ip address]
+
 This is my public repository for the start up application for CS 260.
 
 I'm excited to learn more about web programming.
