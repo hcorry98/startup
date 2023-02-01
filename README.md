@@ -15,7 +15,7 @@ I'm excited to learn more about web programming.
 
 I learned how to resolve merge conflicts and what the default pull options are when a conflict exists. I also learned the process of editing, committing, pushing, and pulling. 
 
-Markdown Cheat Sheet:
+**Markdown Cheat Sheet:**
 https://www.markdownguide.org/cheat-sheet/
 
 ### Delligator
