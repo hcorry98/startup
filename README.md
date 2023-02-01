@@ -1,13 +1,13 @@
 ## The Start Up Application for CS 260
 
 **Domain:**
-http://delligator.link
+https://delligator.link
 
 **Web Server IP:**
 18.217.204.184
 
 **Command to SSH:**
-`ssh -i [key pair file] ubuntu@[ip address]`
+`ssh -i [key pair file] ubuntu@delligator.link`
 
 This is my public repository for the start up application for CS 260.
 
