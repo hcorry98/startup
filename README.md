@@ -9,6 +9,9 @@ https://delligator.link
 **Command to SSH:**
 `ssh -i [key pair file] ubuntu@delligator.link`
 
+**Deployment Command:**
+`./deployWebsite.sh -k ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem -h delligator.link`
+
 This is my public repository for the start up application for CS 260.
 
 I'm excited to learn more about web programming.
