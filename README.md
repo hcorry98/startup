@@ -38,3 +38,11 @@ Design sketches can be found at: https://ninjamock.com/s/NV2TVKx
 - Progress displayed for each project
 - Manage multiple projects at once
 - Persistently stores tasks info
+
+### Simon
+
+It was interesting to see how easy it is to set the width and scale of the viewport so that it works for any device. I also
+liked how the project uses a defined header and footer that is the same for every page. This resembles actual webpages for
+easy navigation. I liked how you can use a menu instead of an unordered list even though it does the same thing. It makes
+the code more readable. Lastly, I thought it was super interesting how we could use quadratic equations in an svg to draw
+the shape of the buttons for Simon.
