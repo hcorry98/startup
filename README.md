@@ -7,7 +7,9 @@ https://delligator.link
 18.217.204.184
 
 **Command to SSH:**
-`ssh -i [key pair file] ubuntu@delligator.link`
+```
+ssh -i ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem ubuntu@delligator.link
+```
 
 **Deployment Command:**
 ```
@@ -45,6 +47,11 @@ the shape of the buttons for Simon.
 I learned how to combine Bootstrap with CSS to achieve the look and feel we want while maintaining the web standards. I also learned how to use CSS to override the typical Bootstrap appearance using `!important`. I also experienced how using HTML and CSS together can simplify a lot of the code instead of just trying to use HTML by itself (especially without Bootstrap). The `play` page is a perfect example of this.
 
 ## Delligator
+
+**Deployment Command:**
+```
+./deployFiles.sh -k ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem -h delligator.link -s startup
+```
 
 I’ve come up with this app that allows teams to divide tasks to more easily manage a project. It’s called “Delligator”. We can set up a project on there and then assign tasks, or parts of the project, to each member in the group. That way we know exactly what portions of the group project we’re each in charge of, and we can see in real-time where everyone is at with their responsibilities. It’ll help increase productivity and avoid confusion as to who is in charge of what. It will also help improve and ease communication about the progress of our project.
 
