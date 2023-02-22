@@ -14,6 +14,9 @@ https://delligator.link
 ./deployWebsite.sh -k ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem -h delligator.link
 ```
 
+**Markdown Cheat Sheet:**
+https://www.markdownguide.org/cheat-sheet/
+
 This is my public repository for the start up application for CS 260.
 
 I'm excited to learn more about web programming.
@@ -34,9 +37,6 @@ I learned how to setup the basic webpages and link them together. I learned how 
 ### CSS
 
 I learned how to combine Bootstrap with CSS to achieve the look and feel we want while maintaining the web standards. I also learned how to use CSS to override the typical Bootstrap appearance using `!important`. I also experienced how using HTML and CSS together can simplify a lot of the code instead of just trying to use HTML by itself (especially without Bootstrap). The `play` page is a perfect example of this.
-
-**Markdown Cheat Sheet:**
-https://www.markdownguide.org/cheat-sheet/
 
 ## Delligator
 
