@@ -77,12 +77,18 @@ hr.solid {
 }
 
 .clickable-div + .clickable-div {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .project-title {
-    margin: 10px;
+    margin-bottom: 10px;
     font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.project-title label {
+    margin-left: 10px;
 }
 
 .project-progress {
