@@ -11,6 +11,7 @@ header {
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
+    border: blue solid 2px;
 }
 
 main {
@@ -27,6 +28,18 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+nav {
+    border: pink solid 2px;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.navbar-brand:hover {
+    color: green !important;
 }
 
 .log-reg-container {
@@ -85,12 +98,12 @@ input {
     color: green !important;
 }
 
-a {
+.link-std {
     color: green !important;
     text-decoration: none !important;
 }
 
-a:hover {
+.link-std:hover {
     color: white !important;
 }
 
