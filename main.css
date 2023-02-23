@@ -76,6 +76,10 @@ hr.solid {
     align-items: center;
 }
 
+.clickable-div {
+    margin-top: 15px;
+}
+
 .clickable-div + .clickable-div {
     margin-top: 30px;
 }
