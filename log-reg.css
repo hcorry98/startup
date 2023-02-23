@@ -11,7 +11,6 @@ header {
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
-    border: blue solid 2px;
 }
 
 main {
@@ -30,17 +29,6 @@ footer {
     justify-content: space-around;
 }
 
-nav {
-    border: pink solid 2px;
-}
-
-.brand-link {
-    color: white !important;
-}
-
-.brand-link:hover {
-    color: green !important;
-}
 
 .log-reg-container {
     height: 400px;
