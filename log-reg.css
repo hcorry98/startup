@@ -29,7 +29,6 @@ footer {
     justify-content: space-around;
 }
 
-
 .log-reg-container {
     height: 400px;
     display: flex;
@@ -43,7 +42,7 @@ footer {
     top: 20px;
 }
 
-form {
+.log-reg-info {
     flex: 1 320px;
     display: flex;
     flex-direction: column;
