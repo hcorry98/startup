@@ -52,6 +52,7 @@ form {
 
 input {
     margin: .5em .5em 0 .5em !important;
+    min-width: 250px;
 }
 
 .password {
