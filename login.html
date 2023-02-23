@@ -17,14 +17,13 @@
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
-            <div>
-                <h1>Delligator</h1>
-            </div>
+            <h1>D E L L I G A T O R</h1>
+            <h5>the app to delegate</h5>
         </header>
 
         <main class="container-fluid">
-            <div id="login" class="container-fluid">
-                <h2>Login</h2>
+            <div class="container-fluid log-reg-container">
+                <h2 class="subtitle">Login</h2>
                 <form method="get" action="home.html">
                     <input type="text" id="username" placeholder="Username" />
                     <div class="password">
@@ -32,13 +31,15 @@
                         <a id="forgot" href="forgotPassword.html">Forgot Password?</a>
                     </div>
                 </form>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <a href="register.html">Don't have an account? Sign up</a>    
+                <div class="container-fluid log-reg-btn">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="register.html">Don't have an account? Sign up</a>   
+                </div>
             </div>
         </main>
 
         <footer>
-                <img id="logo" src="images/green-logo-sm.png" alt="Delligator logo" />
+             <img id="logo" src="images/green-logo-sm.png" alt="Delligator logo" />
         </footer>
     </body>
 </html>

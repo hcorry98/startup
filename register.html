@@ -17,28 +17,30 @@
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
-            <div>
-                <h1>Delligator</h1>
-            </div>
+            <h1>D E L L I G A T O R</h1>
+            <h5>the app to delegate</h5>
         </header>
 
         <main class="containter-fluid">
-            <h2>Sign Up</h2>
-            <form method="get" action="home.html">
-                <input type="text" id="name" placeholder="Name" />
-                <input type="text" id="email" placeholder="Email" />
-                <input type="text" id="username" placeholder="Username" />
-                <input type="password" id="password" placeholder="Password" />
-                <input type="password" id="confirmPass" placeholder="Confirm Password" />
-            </form>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-            <a href="login.html">Already have an account? Login</a>
+            <div class="container-fluid log-reg-container">
+                <h2 class="subtitle">Sign Up</h2>
+                <form method="get" action="home.html">
+                    <input type="text" id="firstname" placeholder="First Name" />
+                    <input type="text" id="lastname" placeholder="Last Name" />
+                    <input type="text" id="email" placeholder="Email" />
+                    <input type="text" id="username" placeholder="Username" />
+                    <input type="password" id="password" placeholder="Password" />
+                    <input type="password" id="confirmPass" placeholder="Confirm Password" />
+                </form>
+                <div class="container-fluid log-reg-btn">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <a href="login.html">Already have an account? Login</a>
+                </div>
+            </div>
         </main>
 
         <footer>
-            <div class="container-fluid">
-                <img id="logo" src="images/green-logo-sm.png" alt="Delligator logo" />
-            </div>
+            <img id="logo" src="images/green-logo-sm.png" alt="Delligator logo" />
         </footer>
     </body>
 </html>
