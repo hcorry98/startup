@@ -6,33 +6,20 @@ body {
 }
 
 header {
-    flex: 0 40px;
-    display: flex;
-    flex-direction: column;
-}
-
-header div {
-    display: flex;
-    flex-direction: row;
-    margin: 0 5px;
-}
-
-header span {
-    flex: 1 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-header hr {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-main {
-    flex: 1 calc(100vh - 90px);
+    flex: 0 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 40px;
+    border: blue solid 2px;
+}
+
+main {
+    flex: 1 calc(100vh - 200px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 footer {
@@ -40,39 +27,20 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.brand {
-    margin-top: 10px;
-}
-
-.brand h1 {
-    margin-top: 5px;
-}
-
-#settings-gear {
-    margin-top: 18px;
-}
-
-hr.solid {
-    border-top: 3px solid;
-}
-
-.subtitle {
-    flex: 0 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.subtitle form {
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
 }
 
+nav {
+    border: pink solid 2px;
+}
+
+.brand-link {
+    color: white !important;
+}
+
+.brand-link:hover {
+    color: green !important;
+}
 
 .log-reg-container {
     height: 400px;
@@ -82,6 +50,44 @@ hr.solid {
     justify-content: space-around;
 }
 
+.subtitle {
+    flex: 0 30px;
+    top: 20px;
+}
+
+form {
+    flex: 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    margin: .5em .5em 0 .5em !important;
+    min-width: 250px;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+}
+
+#forgot {
+    text-align: right !important;
+    margin-right: 10px;
+}
+
+.log-reg-btn {
+    flex: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    bottom: 20px;
+}
+
 .btn-primary {
     background-color: green !important;
     border: green !important;
@@ -89,15 +95,6 @@ hr.solid {
 
 .btn-primary:hover {
     background-color: white !important;
-    color: green !important;
-}
-
-.brand-link {
-    color: white !important;
-    text-decoration: none;
-}
-
-.brand-link:hover {
     color: green !important;
 }
 
@@ -113,7 +110,6 @@ hr.solid {
 #logo {
     width: 80px;
     height: 44px;
-    margin-right: 20px;
 }
 
 @media (max-height: 570px) {
