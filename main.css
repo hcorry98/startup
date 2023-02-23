@@ -65,22 +65,48 @@ hr.solid {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    min-width: 250px;
+    width: calc(90vw - 50px);
+    max-width: 750px;
 }
 
-.subtitle form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-
-.log-reg-container {
-    height: 400px;
+.click-span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
 }
+
+.clickable-div + .clickable-div {
+    margin-top: 20px;
+}
+
+.project-title {
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.project-progress {
+    min-width: 300px;
+    width: 90vw;
+    max-width: 800px;
+}
+
+.project-progress p {
+    margin: 0;
+}
+
+.progress-percent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+.progress-bar {
+    background-color: green !important;
+}
+
+
 
 .btn-primary {
     background-color: green !important;
