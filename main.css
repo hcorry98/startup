@@ -251,13 +251,7 @@ hr.solid {
 }
 
 @media (max-height: 570px) {
-    header {
-        display: none;
-    }
     footer {
         display: none;
-    }
-    main {
-        flex: 1;
     }
 }
