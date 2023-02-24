@@ -258,6 +258,6 @@ hr.solid {
         display: none;
     }
     main {
-        flex: 1 100vh;
+        flex: 1;
     }
 }
