@@ -1,8 +1,11 @@
+html, body {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-width: 375px;
-    text-align: center;
 }
 
 header {
@@ -14,10 +17,9 @@ header {
 }
 
 main {
-    flex: 1 calc(100vh - 200px);
+    flex-grow: 1;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-around;
 }
 
@@ -26,15 +28,14 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
 }
 
 .log-reg-container {
     height: 400px;
+    margin: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
 }
 
 .subtitle {
@@ -70,7 +71,6 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     margin-top: 10px;
     bottom: 20px;
 }
@@ -107,6 +107,6 @@ input {
         display: none;
     }
     main {
-        flex: 1 100vh;
+        flex-grow: 1;
     }
 }
