@@ -135,6 +135,9 @@ hr.solid {
     background-color: green !important;
 }
 
+#new-task-btn {
+    margin-top: 30px;
+}
 
 
 .accordion {
@@ -172,6 +175,10 @@ hr.solid {
     transform: rotate(180deg)
 }
 
+.accordion-body {
+    padding: 0 !important;
+}
+
 
 
 .form-check-input:focus {
@@ -199,6 +206,12 @@ hr.solid {
 
 .form-check-input:checked ~ .form-check-label {
     opacity: 50%;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
