@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Delligator</title>
         <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="new.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -38,113 +38,126 @@
         </header>
 
         <main class="container-fluid">
-                <div class="project-title">
-                    <div>
-                        <h2>Create a New Project</h2>
-                    </div>
-                </div>
+            <div class="subtitle">
+                <h2>Create a New Project</h2>
+            </div>
 
             <div class="container-fluid">
-                <div class="container-fluid row">
-                    <label for="projectName" class="col-sm-2 col-form-label">Project Name</label>
-                    <div class="col-sm-5">
+
+                <form>
+
+                    <field class="text">
+                        <label for="projectName">Project Name</label>
                         <input type="text" class="form-control" id="projectName" />
-                    </div>
-                </div>
+                    </field>
 
-                <div class="container-fluid">
-                    <label class="col-sm-2 col-form-label">Project Icon</label>
-                    <img src="images/icons/briefcase.svg" alt="briefcase" style="filter: invert(1)" />
+                    <field class="text">
+                        <label>Project Icon</label>
+                        <div class="button">
+                            <img src="images/icons/briefcase.svg" alt="briefcase" style="filter: invert(1)" />
+                            <button type="button" id="projectIcon" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#iconModal">
+                                Select Project Icon
+                            </button>
+                        </div>
+                    </field>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#iconModal">
-                        Select Project Icon
-                    </button>
-
-                    <div class="modal fade" id="iconModal" tabindex="-1" aria-labelledby="iconModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content bg-dark text-light">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="iconModalLabel">Select Project Icon</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1)"></button>
+                    <field>
+                        <div class="team">
+                            <label>Team Members</label>
+                            
+                            <div class="members">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M5 12l14 0" />
+                                    </svg>
+                                    <label>Jonathan</label>
                                 </div>
-
-                                <div class="modal-body" id="icon-modal">
-                                    <img class="icons-avail" src="images/icons/books.svg" alt="books" />
-                                    <img class="icons-avail" src="images/icons/note.svg" alt="note" />
-                                    <img class="icons-avail" src="images/icons/notebook.svg" alt="notebook" />
-                                    <img class="icons-avail" src="images/icons/notes.svg" alt="notes" />
-
-                                    <img class="icons-avail" src="images/icons/chart-bar.svg" alt="bar chart" />
-                                    <img class="icons-avail" src="images/icons/clipboard-text.svg" alt="clipboard" />
-                                    <img class="icons-avail" src="images/icons/pencil.svg" alt="pencil" />
-                                    <img class="icons-avail" src="images/icons/device-laptop.svg" alt="laptop" />
-
-                                    <img class="icons-avail" src="images/icons/school.svg" alt="school" />
-                                    <img class="icons-avail" src="images/icons/backpack.svg" alt="backpack" />
-                                    <img class="icons-avail" src="images/icons/briefcase.svg" alt="briefcase" />
-
-                                    <img class="icons-avail" src="images/icons/home.svg" alt="house" />
-                                    <img class="icons-avail" src="images/icons/building-church.svg" alt="church" />
-                                    <img class="icons-avail" src="images/icons/building-hospital.svg" alt="hospital" />
-                                    <img class="icons-avail" src="images/icons/building-bank.svg" alt="bank" />
-
-                                    <img class="icons-avail" src="images/icons/wallet.svg" alt="wallet" />
-                                    <img class="icons-avail" src="images/icons/shopping-cart.svg" alt="shopping-cart" />
-
-                                    <img class="icons-avail" src="images/icons/atom.svg" alt="atom" />
-                                    <img class="icons-avail" src="images/icons/microscope.svg" alt="microscope" />
-
-                                    <img class="icons-avail" src="images/icons/brush.svg" alt="brush" />
-                                    <img class="icons-avail" src="images/icons/camera.svg" alt="camera" />
-                                    <img class="icons-avail" src="images/icons/photo.svg" alt="photo" />
-
-                                    <img class="icons-avail" src="images/icons/ball-american-football.svg" alt="american football" />
-                                    <img class="icons-avail" src="images/icons/ball-basketball.svg" alt="basketball" />
-                                    <img class="icons-avail" src="images/icons/ball-football.svg" alt="soccer" />
-                                    <img class="icons-avail" src="images/icons/soccer-field.svg" alt="soccer field" />
-                                    <img class="icons-avail" src="images/icons/olympics.svg" alt="olympics" />
-                                    
-                                    <img class="icons-avail" src="images/icons/heart.svg" alt="heart" />
-                                    <img class="icons-avail" src="images/icons/plane.svg" alt="plane" />
-                                    <img class="icons-avail" src="images/icons/hammer.svg" alt="hammer" />
-                                    <img class="icons-avail" src="images/icons/tool.svg" alt="tool" />
+        
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M5 12l14 0" />
+                                    </svg>
+                                    <label>Hailey</label>
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M5 12l14 0" />
+                                    </svg>
+                                    <label>Sarah</label>
                                 </div>
+                            </div>
+                        </div>
+                        
+                    </field>
+
+                </form>
+
+                <div class="modal fade" id="iconModal" tabindex="-1" aria-labelledby="iconModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark text-light">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="iconModalLabel">Select Project Icon</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1)"></button>
+                            </div>
+
+                            <div class="modal-body" id="icon-modal">
+                                <img class="icons-avail" src="images/icons/books.svg" alt="books" />
+                                <img class="icons-avail" src="images/icons/note.svg" alt="note" />
+                                <img class="icons-avail" src="images/icons/notebook.svg" alt="notebook" />
+                                <img class="icons-avail" src="images/icons/notes.svg" alt="notes" />
+
+                                <img class="icons-avail" src="images/icons/chart-bar.svg" alt="bar chart" />
+                                <img class="icons-avail" src="images/icons/clipboard-text.svg" alt="clipboard" />
+                                <img class="icons-avail" src="images/icons/pencil.svg" alt="pencil" />
+                                <img class="icons-avail" src="images/icons/device-laptop.svg" alt="laptop" />
+
+                                <img class="icons-avail" src="images/icons/school.svg" alt="school" />
+                                <img class="icons-avail" src="images/icons/backpack.svg" alt="backpack" />
+                                <img class="icons-avail" src="images/icons/briefcase.svg" alt="briefcase" />
+
+                                <img class="icons-avail" src="images/icons/home.svg" alt="house" />
+                                <img class="icons-avail" src="images/icons/building-church.svg" alt="church" />
+                                <img class="icons-avail" src="images/icons/building-hospital.svg" alt="hospital" />
+                                <img class="icons-avail" src="images/icons/building-bank.svg" alt="bank" />
+
+                                <img class="icons-avail" src="images/icons/wallet.svg" alt="wallet" />
+                                <img class="icons-avail" src="images/icons/shopping-cart.svg" alt="shopping-cart" />
+
+                                <img class="icons-avail" src="images/icons/atom.svg" alt="atom" />
+                                <img class="icons-avail" src="images/icons/microscope.svg" alt="microscope" />
+
+                                <img class="icons-avail" src="images/icons/brush.svg" alt="brush" />
+                                <img class="icons-avail" src="images/icons/camera.svg" alt="camera" />
+                                <img class="icons-avail" src="images/icons/photo.svg" alt="photo" />
+
+                                <img class="icons-avail" src="images/icons/ball-american-football.svg" alt="american football" />
+                                <img class="icons-avail" src="images/icons/ball-basketball.svg" alt="basketball" />
+                                <img class="icons-avail" src="images/icons/ball-football.svg" alt="soccer" />
+                                <img class="icons-avail" src="images/icons/soccer-field.svg" alt="soccer field" />
+                                <img class="icons-avail" src="images/icons/olympics.svg" alt="olympics" />
+                                
+                                <img class="icons-avail" src="images/icons/heart.svg" alt="heart" />
+                                <img class="icons-avail" src="images/icons/plane.svg" alt="plane" />
+                                <img class="icons-avail" src="images/icons/hammer.svg" alt="hammer" />
+                                <img class="icons-avail" src="images/icons/tool.svg" alt="tool" />
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="container-fluid">
-                    <label class="col-sm-2 col-form-label">Team Members: </label>
+                    <label class="col-form-label">Team Members: </label>
                     <div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            <label>Jonathan</label>
-                        </div>
-
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            <label>Hailey</label>
-                        </div>
-
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            <label>Sarah</label>
-                        </div>
+                        
                         
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

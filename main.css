@@ -218,15 +218,6 @@ hr.solid {
 
 
 
-.icons-avail {
-    filter: invert(1);
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-}
-
-
-
 .btn-primary {
     background-color: green !important;
     border: green !important;
