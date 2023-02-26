@@ -173,6 +173,15 @@ h2 {
     margin: 10px;
 }
 
+.icons-avail:hover {
+    filter: invert(1) drop-shadow(0 0 5px green) drop-shadow(0 0 10px green) drop-shadow(0 0 20px green);
+}
+
+.icons-avail:focus {
+    filter: invert(22%) sepia(99%) saturate(4178%) hue-rotate(122deg) brightness(91%) contrast(102%) brightness(80%)
+    drop-shadow(0 0 5px white) drop-shadow(0 0 10px white) drop-shadow(0 0 20px white);
+}
+
 .form-section {
     display: flex;
     flex-direction: row;
