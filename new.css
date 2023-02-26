@@ -145,6 +145,10 @@ field svg {
     align-self: start;
 }
 
+#member-select {
+    margin-top: 5px;
+}
+
 .members button {
     margin-top: 30px;
 }
