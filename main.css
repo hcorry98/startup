@@ -40,6 +40,12 @@ main {
     align-items: center;
 }
 
+main hr {
+    width: 93%;
+    max-width: 800px;
+    margin-top: 30px;
+}
+
 footer {
     flex: 0 50px;
     display: flex;
@@ -70,13 +76,18 @@ hr.solid {
 .subtitle {
     flex: 0 30px;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     min-width: 250px;
     width: calc(90vw - 50px);
     max-width: 750px;
+
+    padding: 15px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: #2f343a;
 }
 
 .subtitle .project-title img {
@@ -96,13 +107,15 @@ hr.solid {
 
 .clickable-div {
     margin-top: 15px;
+    padding: 15px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: #2f343a;
 }
 
 .clickable-div + .clickable-div {
-    margin-top: 30px;
+    margin-top: 15px;
 }
-
-
 
 .project-title {
     margin-bottom: 10px;
@@ -122,7 +135,7 @@ hr.solid {
 }
 
 .project-progress p {
-    margin: 0;
+    margin: 5px 0;
 }
 
 .progress-percent {
@@ -138,6 +151,16 @@ hr.solid {
 
 #new-task-btn {
     margin-top: 30px;
+}
+
+
+
+.settings-field {
+    margin-top: 15px;
+    padding: 15px;
+    padding-bottom: 0px;
+    border-radius: 5px;
+    background-color: #2f343a;
 }
 
 

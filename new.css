@@ -172,6 +172,14 @@ field svg {
 
 
 
+svg.rmv-btn:hover {
+    fill: red;
+}
+
+svg.add-btn:hover {
+    fill: green;
+}
+
 .btn-primary {
     background-color: green !important;
     border: green !important;
