@@ -165,6 +165,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     justify-items: center;
+    padding: 10px;
 }
 
 .icons-avail {
