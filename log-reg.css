@@ -52,6 +52,11 @@ footer {
     justify-content: center;
 }
 
+.log-reg-info p {
+    max-width: 500px;
+    text-align: justify;
+}
+
 input {
     margin: .5em .5em 0 .5em !important;
     min-width: 250px;
@@ -66,7 +71,7 @@ input {
 
 #forgot {
     text-align: right !important;
-    margin-right: 10px;
+    align-self: stretch !important;
 }
 
 .log-reg-btn {
