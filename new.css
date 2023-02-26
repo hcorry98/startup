@@ -40,6 +40,12 @@ main {
     align-items: center;
 }
 
+main hr {
+    width: 93%;
+    max-width: 800px;
+    margin-top: 30px;
+}
+
 footer {
     flex: 0 50px;
     display: flex;
@@ -65,18 +71,27 @@ hr.solid {
     border-top: 3px solid;
 }
 
+h2 {
+    margin-bottom: 0 !important;
+}
+
 
 
 .subtitle {
+    flex: 0 30px;
     margin-top: 20px;
-    margin-bottom: 30px;
-}
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 250px;
+    width: calc(90vw - 50px);
+    max-width: 750px;
 
-main hr {
-    margin-top: 0;
-    margin-bottom: 10px;
-    width: 97%;
-    max-width: 800px;         
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #2f343a;
 }
 
 #create-proj {
@@ -87,7 +102,13 @@ main hr {
 
 #fields {
     flex: 1;
-    max-width: 700px;
+    max-width: 830px;
+
+    margin-top: 15px;
+    padding: 15px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: #2f343a;
 }
 
 .modal-body {

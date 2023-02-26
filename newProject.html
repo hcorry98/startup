@@ -39,7 +39,10 @@
 
         <main class="container-fluid">
             <div class="subtitle">
-                <h2>Create a New Project</h2>
+                <h2>New Project</h2>
+                <form action="project.html">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
             </div>
 
             <hr class="solid">
@@ -47,10 +50,19 @@
 
                 <form id="create-proj">
                     <div id="fields">
+
+                        <div id="icon-select">
+                            <div>
+                                <img src="images/icons/plus.svg" style="filter: invert(1)" alt="Choose project icon" />
+                            </div>
+                            <label>
+                                Select Icon
+                            </label>
+                        </div>
                         
                         <div class="form-section">
                             <label for="projectName">Project Name</label>
-                            <input type="text" class="form-control" id="projectName" />
+                            <input type="text" class="form-control" id="projectName" placeholder="Project Name" />
                         </div>
     
                         <div class="form-section">
@@ -124,11 +136,6 @@
                 </form>
 
             </div>
-            <hr class="solid">
-
-            <form action="project.html">
-                <button type="submit" id="btn-new-proj" class="btn btn-primary">Finish</button>
-            </form>
         </main>
 
         <footer class="container-fluid">
