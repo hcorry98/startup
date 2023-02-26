@@ -71,6 +71,10 @@ hr.solid {
     border-top: 3px solid;
 }
 
+h2 {
+    margin-bottom: 0 !important;
+}
+
 
 
 .subtitle {
@@ -85,18 +89,24 @@ hr.solid {
     max-width: 750px;
 
     padding: 15px;
-    padding-bottom: 10px;
     border-radius: 5px;
     background-color: #2f343a;
 }
 
-.subtitle .project-title img {
-    height: 1.5em;
-    width: 1.5em;
+.subtitle div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.subtitle .project-title h2 {
+.subtitle .project-icon {
+    flex: 0 2em;
+}
+
+.subtitle div h2 {
     margin-left: 10px;
+    vertical-align: baseline;
 }
 
 .click-span {
@@ -118,7 +128,6 @@ hr.solid {
 }
 
 .project-title {
-    margin-bottom: 10px;
     font-size: 1.5em;
     display: flex;
     flex-direction: row;
@@ -132,6 +141,7 @@ hr.solid {
     min-width: 300px;
     width: 90vw;
     max-width: 800px;
+    margin-top: 10px;
 }
 
 .project-progress p {
@@ -147,10 +157,6 @@ hr.solid {
 
 .progress-bar {
     background-color: green !important;
-}
-
-#new-task-btn {
-    margin-top: 30px;
 }
 
 
