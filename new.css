@@ -72,6 +72,24 @@ hr.solid {
     margin-bottom: 30px;
 }
 
+main hr {
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 96.5%;
+    max-width: 800px;         
+}
+
+#create-proj {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#fields {
+    flex: 1;
+    max-width: 800px;
+}
+
 .icons-avail {
     filter: invert(1);
     width: 40px;
@@ -79,7 +97,7 @@ hr.solid {
     margin: 10px;
 }
 
-field.text {
+.form-section {
     display: flex;
     flex-direction: row;
     gap: 4px;
@@ -87,22 +105,42 @@ field.text {
     align-items: center;
 }
 
-field.text label {
+.form-section label {
     flex: 0 10em;
-
 }
 
-field.text input {
+.form-section input {
     flex: 1;
 }
 
-field.text .button {
+field {
     flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
 }
 
-.button img {
+field img {
     margin-right: 2em;
 }
+
+field svg {
+    margin-right: 0.5em;
+}
+
+#members-label {
+    align-self: start;
+}
+
+.members button {
+    margin-top: 30px;
+}
+
+#btn-new-proj {
+    margin-top: 30px;
+}
+
 
 
 
