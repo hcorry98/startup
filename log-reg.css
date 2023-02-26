@@ -55,11 +55,13 @@ footer {
 input {
     margin: .5em .5em 0 .5em !important;
     min-width: 250px;
+    max-width: 300px;
 }
 
 .password {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #forgot {
