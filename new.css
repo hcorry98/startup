@@ -75,7 +75,7 @@ hr.solid {
 main hr {
     margin-top: 0;
     margin-bottom: 10px;
-    width: 96.5%;
+    width: 97%;
     max-width: 800px;         
 }
 
@@ -87,7 +87,7 @@ main hr {
 
 #fields {
     flex: 1;
-    max-width: 800px;
+    max-width: 700px;
 }
 
 .modal-body {
