@@ -1,3 +1,13 @@
+:root {
+    --delligator-white-rgb: rgb(246, 247, 249);
+    --delligator-green-rgb: green;
+    /*
+    --delligator-white-rgb: black;
+    --delligator-green-rgb: rgb(23,176,5);
+    */
+    --hr-rgb: rgb(86, 90, 93);
+}
+
 html, body {
     height: 100%;
 }
@@ -111,6 +121,40 @@ h2 {
     background-color: #2f343a;
 }
 
+#icon-select {
+    max-width: 4em;
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#icon-select label {
+    margin: 3px;
+    text-align: center;
+    min-width: 6em;
+}
+
+#icon-select div {
+    flex: 1;
+    min-height: 42px;
+    min-width: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    border: solid var(--delligator-white-rgb) 2px;
+
+}
+
+#icon-select img {
+    flex: 1;
+    width: 36px;
+}
+
 .modal-body {
     display: flex;
     flex-direction: column;
@@ -202,31 +246,31 @@ svg.add-btn:hover {
 }
 
 .btn-primary {
-    background-color: green !important;
-    border: green !important;
+    background-color: var(--delligator-green-rgb) !important;
+    border: var(--delligator-green-rgb) !important;
 }
 
 .btn-primary:hover {
-    background-color: white !important;
-    color: green !important;
+    background-color: var(--delligator-white-rgb) !important;
+    color: var(--delligator-green-rgb) !important;
 }
 
 .brand-link {
-    color: white !important;
+    color: var(--delligator-white-rgb) !important;
     text-decoration: none;
 }
 
 .brand-link:hover {
-    color: green !important;
+    color: var(--delligator-green-rgb) !important;
 }
 
 .link-std {
-    color: green !important;
+    color: var(--delligator-green-rgb) !important;
     text-decoration: none !important;
 }
 
 .link-std:hover {
-    color: white !important;
+    color: var(--delligator-white-rgb) !important;
 }
 
 #logo {
