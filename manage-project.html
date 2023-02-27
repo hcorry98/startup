@@ -44,7 +44,7 @@
                     <h2>Class Project - <i>Managing</i></h2>
                 </div>
                 <form action="project.html">
-                    <button type="submit" id="btn-new-proj" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
 
@@ -69,11 +69,18 @@
                 </div>
             </div>
 
-            <form action="new-tasks.html">
-                <button id="new-task-btn" class="btn btn-primary">
-                    Create New Tasks
-                </button>
-            </form>
+            <div class="manage-btns">
+                <form action="new-tasks.html">
+                    <button class="btn btn-primary">
+                        Create New Tasks
+                    </button>
+                </form>
+                <form action="manage-team.html">
+                    <button class="btn btn-primary">
+                        Manage Team Members
+                    </button>
+                </form>
+            </div>
 
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
@@ -85,15 +92,33 @@
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item disabled" aria-disable="true">
+                                <li class="list-group-item">
                                     <div class="task">
-                                        Task C
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label class="completed">
+                                                Task C
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
                                 <li class="list-group-item">
                                     <div class="task">
-                                        Task E
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label>
+                                                Task E
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
@@ -113,13 +138,31 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <div class="task">
-                                        Task A
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label>
+                                                Task A
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
                                 <li class="list-group-item">
                                     <div class="task">
-                                        Task F
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label>
+                                                Task F
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
@@ -137,18 +180,51 @@
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div class="accordion-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item disabled" aria-disable="true">
+                                <li class="list-group-item">
                                     <div class="task">
-                                        Task B
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label class="completed">
+                                                Task B
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
-                                <li class="list-group-item disabled" aria-disable="true">
+                                <li class="list-group-item">
                                     <div class="task">
-                                        Task D
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                <path d="M9 12l6 0"></path>
+                                             </svg>
+                                             <label class="completed">
+                                                Task D
+                                             </label>
+                                        </div>
                                         <img class="handle" src="images/menu-2.svg" />
                                     </div>
                                 </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingZero">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseZero" aria-expanded="true" aria-controls="panelsStayOpen-collapseZero">
+                            <i>Unassigned</i>&nbsp;- None
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseZero" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingZero">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush">
+                                
                             </ul>
                         </div>
                     </div>

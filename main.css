@@ -190,6 +190,14 @@ h2 {
 
 
 
+.manage-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+
+
 .accordion {
     margin-top: 30px;
     min-width: 300px;
@@ -264,7 +272,25 @@ h2 {
     justify-content: space-between;
 }
 
+.task div {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
 
+.task svg {
+    margin-right: 10px;
+}
+
+.completed {
+    color: var(--bs-list-group-disabled-color);
+}
+
+
+
+svg.rmv-btn:hover {
+    fill: red;
+}
 
 .btn-primary {
     background-color: green !important;
