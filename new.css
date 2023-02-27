@@ -113,6 +113,7 @@ h2 {
 
 .subtitle .project-icon {
     flex: 0 2em;
+    min-width: 32px;
 }
 
 .subtitle div h2 {
