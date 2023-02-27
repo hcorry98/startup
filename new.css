@@ -282,6 +282,8 @@ th h5 {
 td {
     display: table-cell;
     vertical-align: middle;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 
