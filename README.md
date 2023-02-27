@@ -53,6 +53,14 @@ I learned how to combine Bootstrap with CSS to achieve the look and feel we want
 ./deployFiles.sh -k ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem -h delligator.link -s startup
 ```
 
+**What I've Learned:**
+
+I've learned how to utilize various components and form from Bootstrap 5. I've also learned how to use CSS to alter the color and behavior of any element on the page. I've practiced using Chrome's debugging tools to understand why my code is behaving a certian way. I've also learned that some Bootstrap elements need JavaScript to function, and I've learned how to include that script.
+
+I've learned how to utilize `div`s along with `display`s to achieve the lookout and layout I want. I've learned how to design the page to work on full-screen dispalys, resizable displays, and on mobile displays. I've also learned how to add `hover` and `acitve` design elements to my components.
+
+**Elevator Pitch:**
+
 I’ve come up with this app that allows teams to divide tasks to more easily manage a project. It’s called “Delligator”. We can set up a project on there and then assign tasks, or parts of the project, to each member in the group. That way we know exactly what portions of the group project we’re each in charge of, and we can see in real-time where everyone is at with their responsibilities. It’ll help increase productivity and avoid confusion as to who is in charge of what. It will also help improve and ease communication about the progress of our project.
 
 The mascot and logo for the app is an alligator named Del.
