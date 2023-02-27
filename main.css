@@ -53,6 +53,12 @@ footer {
     align-items: center;
 }
 
+footer hr {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
 
 
 .brand {
@@ -181,6 +187,8 @@ h2 {
 
 
 .settings-field {
+    max-width: 800px;
+    text-align: justify;
     margin-top: 15px;
     padding: 15px;
     padding-bottom: 0px;
@@ -288,6 +296,16 @@ h2 {
 
 
 
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 50px;
+    padding: 20px;
+}
+
+
+
 svg.rmv-btn:hover {
     fill: red;
 }
@@ -317,6 +335,14 @@ svg.rmv-btn:hover {
 }
 
 .link-std:hover {
+    color: white !important;
+}
+
+footer a {
+    color: green !important;
+}
+
+footer a:hover {
     color: white !important;
 }
 

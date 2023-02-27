@@ -63,6 +63,12 @@ footer {
     align-items: center;
 }
 
+footer hr {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
 
 
 .brand {
@@ -329,6 +335,15 @@ td {
 
 
 
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 50px;
+    padding: 20px;
+}
+
+
 
 svg.rmv-btn:hover {
     fill: red;
@@ -375,6 +390,14 @@ svg.add-btn:hover {
 
 .link-std:hover {
     color: var(--delligator-white-rgb) !important;
+}
+
+footer a {
+    color: green !important;
+}
+
+footer a:hover {
+    color: white !important;
 }
 
 #logo {
