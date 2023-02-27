@@ -40,7 +40,7 @@
         <main class="container-fluid">
             <div class="subtitle">
                 <h2>New Project</h2>
-                <form action="project.html">
+                <form action="newTasks.html">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
             </div>
@@ -95,25 +95,8 @@
                                 </div>
 
                                 <div>
-                                    <field id="member-select">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="add-btn icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                            <path d="M9 12l6 0"></path>
-                                            <path d="M12 9l0 6"></path>
-                                         </svg>
-                                        <select class="form-select">
-                                            <option selected disabled>Choose past team member...</option>
-                                            <option value="James">James</option>
-                                            <option value="Jeff">Jeff</option>
-                                            <option value="Jeremiah">Jeremiah</option>
-                                        </select>
-                                    </field>
-                                </div>
-
-                                <div>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inviteModal">
-                                        Invite New Team Member
+                                        Add Team Member
                                     </button>
                                 </div>
 
@@ -196,21 +179,48 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="inviteModalLabel">Invite New Team Member</h1>
+                        <h1 class="modal-title fs-5" id="inviteModalLabel">Add Team Member</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1)"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="invite-form">
-                            <p>
-                                Please enter the email address of the person you'd like to team up with.
-                                An email will be sent to them so that they can join your team.
-                            </p>
-                            <input type="email" class="form-control" id="inviteEmail" placeholder="example@email.com" />    
+                        <div class="member-modal">
+                            <div class="member">
+                                <h5>
+                                    Add Old Team Member
+                                </h5>
+                                <div class="member-form">
+                                    <select class="form-select">
+                                        <option disabled selected>
+                                            Choose team member...
+                                        </option>  
+                                        <option>
+                                            Jonathan
+                                        </option>
+                                        <option>
+                                            Hailey
+                                        </option>
+                                    </select>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                                </div>
+                            </div>
+
+                            <div class="member">
+                                <h5>
+                                    Invite New Team Member
+                                </h5>
+                                <p>
+                                    Please enter the email address of the person you'd like to team up with.
+                                    An email will be sent to them so that they can join your team.
+                                </p>
+                                <div class="member-form">
+                                    <input type="email" class="form-control" id="inviteEmail" placeholder="example@email.com" /> 
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Never mind</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>

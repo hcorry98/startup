@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Delligator</title>
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="new.css" />
+
+        <!-- Include bootstrap CSS framework -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+        />
+    </head>
+    <body class="bg-dark text-light">
+        <header class="container-fluid">
+            <div class=container-fluid">
+                <span class="brand">
+                    <a href="home.html">
+                        <img id="logo" src="images/green-logo-sm.png" alt="logo" />
+                    </a>
+                    <h1><a class="brand-link" href="home.html">D E L L I G A T O R</a></h1>    
+                </span>
+                <div>
+                    <a href="settings.html">
+                        <svg id="settings-gear" xmlns="http://www.w3.org/2000/svg" class="brand-link icon icon-tabler icon-tabler-settings" width="2em" height="2em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <hr class="solid">
+        </header>
+
+        <main class="container-fluid">
+            <div class="subtitle">
+                <div>
+                    <img class="project-icon" src="/images/icons/school.svg" style="filter: invert(1)" alt="School" />
+                    <h2>Class Project - <i>New Tasks</i></h2>
+                </div>
+                <form action="project.html">
+                    <button type="submit" id="btn-new-tasks" class="btn btn-primary">Add Tasks</button>
+                </form>
+            </div>
+
+            <hr class="solid">
+            <div class="container-fluid">
+                <form id="create-task">
+                    <div id="fields">
+                        <div class="form-section">
+                            <table class="table text-light" id="new-task-table">
+                                <tr>
+                                    <th>
+                                        <h5>Task Name</h5>
+                                    </th>
+                                    <th>
+                                        <h5>Assigned Team Member</h5>
+                                    </th>
+                                    <th>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="add-btn icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                            <path d="M9 12l6 0"></path>
+                                            <path d="M12 9l0 6"></path>
+                                        </svg>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="text" placeholder="New Task" class="form-control" />
+                                    </td>
+
+                                    <td>
+                                        <select class="form-select">
+                                            <option disabled selected>
+                                                Assign team member..
+                                            </option>
+                                            <option>Me</option>
+                                            <option>Jonathan</option>
+                                            <option>Hailey</option>
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                            <path d="M9 12l6 0"></path>
+                                         </svg>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="text" placeholder="New Task" class="form-control" />
+                                    </td>
+
+                                    <td>
+                                        <select class="form-select">
+                                            <option disabled selected>
+                                                Assign team member..
+                                            </option>
+                                            <option>Me</option>
+                                            <option>Jonathan</option>
+                                            <option>Hailey</option>
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="rmv-btn icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                            <path d="M9 12l6 0"></path>
+                                         </svg>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="container-fluid">
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    </body>
+</html>

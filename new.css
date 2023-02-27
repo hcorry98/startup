@@ -104,7 +104,29 @@ h2 {
     background-color: #2f343a;
 }
 
+.subtitle div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.subtitle .project-icon {
+    flex: 0 2em;
+}
+
+.subtitle div h2 {
+    margin-left: 10px;
+    vertical-align: baseline;
+}
+
 #create-proj {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#create-task {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -212,6 +234,25 @@ h2 {
     flex: 0 10em;
 }
 
+table {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+th {
+    border-bottom-width: 3px !important;
+}
+
+th h5 {
+    color: var(--delligator-green-rgb);
+}
+
+td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 
 field {
@@ -239,20 +280,44 @@ field svg {
 }
 
 .members button {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-.invite-form {
-    max-width: 400px;
+.member-modal {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.member {
+    min-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     text-align: justify;
 }
 
-.invite-form input {
+.member + .member {
+    margin-top: 30px;
+}
+
+.member input {
     max-width: 300px;
 }
+
+.member select {
+    max-width: 300px;
+}
+
+.member-form {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
 
 #btn-new-proj {
     margin-top: 30px;
@@ -277,6 +342,17 @@ svg.add-btn:hover {
 .btn-primary:hover {
     background-color: var(--delligator-white-rgb) !important;
     color: var(--delligator-green-rgb) !important;
+}
+
+.btn-tertiary {
+    background-color: var(--delligator-white-rgb) !important;
+    border: var(--delligator-white-rgb) !important;
+    color: var(--delligator-green-rgb) !important;
+}
+
+.btn-tertiary:hover {
+    background-color: var(--delligator-green-rgb) !important;
+    color: var(--delligator-white-rgb) !important;
 }
 
 .brand-link {
