@@ -120,10 +120,11 @@ h2 {
     vertical-align: baseline;
 }
 
-#create-proj {
+.create-proj {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #create-task {
@@ -132,16 +133,44 @@ h2 {
     justify-content: center;
 }
 
-#fields {
+.fields {
     flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 830px;
-
-    margin-top: 15px;
     padding: 15px;
-    padding-bottom: 10px;
     border-radius: 5px;
     background-color: #2f343a;
 }
+
+.fields + .fields {
+    margin-top: 20px;
+}
+
+.form-section {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+}
+
+.form-section #icon-select {
+    flex: 0 8em;
+    margin-top: 15px;
+    margin-left: calc(width / 2);
+}
+
+.form-section input {
+    flex: 1;
+    max-width: 400px;
+}
+
+
 
 #icon-select {
     text-align: center;
@@ -207,32 +236,34 @@ h2 {
     drop-shadow(0 0 5px white) drop-shadow(0 0 5px white) drop-shadow(0 0 5px white);
 }
 
-.form-section {
+
+
+.members {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member {
+    flex: 1;
+    max-width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 4px;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-.form-section + .form-section {
-    margin-top: 20px;
+.member + .member {
+    border-top: solid;
 }
 
-.form-section #icon-select {
-    flex: 0 8em;
-    margin-top: 15px;
-    margin-left: calc(width / 2);
+.members button {
+    margin-top: 10px;
 }
 
-.form-section input {
-    flex: 1;
-    max-width: 400px;
-}
 
-.form-section label {
-    flex: 0 10em;
-}
 
 table {
     width: 100%;
@@ -255,33 +286,6 @@ td {
 
 
 
-field {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-}
-
-field img {
-    margin-right: 2em;
-}
-
-field svg {
-    margin-right: 0.5em;
-}
-
-#members-label {
-    align-self: start;
-}
-
-#member-select {
-    margin-top: 5px;
-}
-
-.members button {
-    margin-top: 10px;
-}
 
 .member-modal {
     flex: 1;
@@ -290,7 +294,7 @@ field svg {
     align-items: center;
 }
 
-.member {
+.member-modal-section {
     min-width: 400px;
     width: 100%;
     display: flex;
@@ -298,16 +302,8 @@ field svg {
     text-align: justify;
 }
 
-.member + .member {
+.member-modal-section + .member-modal-section{
     margin-top: 30px;
-}
-
-.member input {
-    max-width: 300px;
-}
-
-.member select {
-    max-width: 300px;
 }
 
 .member-form {
@@ -316,6 +312,16 @@ field svg {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.member-form input {
+    max-width: 300px;
+}
+
+.member-form select {
+    max-width: 300px;
+}
+
+
 
 
 
