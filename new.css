@@ -257,7 +257,7 @@ h2 {
 }
 
 .member + .member {
-    border-top: solid;
+    border-top: solid 1px;
 }
 
 .members button {
