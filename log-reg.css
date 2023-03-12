@@ -1,3 +1,7 @@
+:root {
+    --del-green: #00ba00;
+}
+
 html, body {
     height: 100%;
 }
@@ -91,22 +95,25 @@ input {
 }
 
 .btn-primary {
-    background-color: green !important;
-    border: green !important;
+    background-color: var(--del-green) !important;
+    border: var(--del-green) !important;
+    color: var(--bs-dark) !important;
 }
 
 .btn-primary:hover {
-    background-color: white !important;
-    color: green !important;
+    background-color: var(--bs-dark) !important;
+    color: var(--del-green) !important;
+    border: 1px solid var(--bs-light) !important;
+    padding: 5px 11px;
 }
 
 .link-std {
-    color: green !important;
+    color: var(--del-green) !important;
     text-decoration: none !important;
 }
 
 .link-std:hover {
-    color: white !important;
+    color: var(--bs-light) !important;
 }
 
 #logo {

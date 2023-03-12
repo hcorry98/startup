@@ -1,3 +1,7 @@
+:root {
+    --del-green: #00ba00;
+}
+
 html, body {
     height: 100%;
 }
@@ -177,11 +181,15 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: white;
+    color: var(--bs-light);
+}
+
+.progress {
+    background-color: var(--bs-dark) !important;
 }
 
 .progress-bar {
-    background-color: green !important;
+    background-color: var(--del-green) !important;
 }
 
 
@@ -214,24 +222,24 @@ h2 {
 }
 
 .accordion-item{
-    border-bottom-color: green !important;
+    border-bottom-color: var(--del-green) !important;
 }
 
 .accordion-button:not(.collapsed) {
-    color: #FFF  !important;
-    background-color: green !important;
+    color: var(--bs-light)  !important;
+    background-color: var(--del-green) !important;
 }
 
 .accordion-button:link, .accordion-button:visited, .accordion-button:hover, .accordion-button:active  {
     text-decoration: none !important;
     border: hidden !important;
-    border-color: #FFF !important;
+    border-color: var(--bs-light) !important;
     box-shadow: 0px !important;   
 }
 
 .accordion-button:focus {
     z-index: 3;
-    border-color: #FFF !important;
+    border-color: var(--bs-light) !important;
     outline: 0;
     box-shadow: none !important;
 }
@@ -257,8 +265,8 @@ h2 {
 }
 
 .form-check-input:not(:checked) {
-    background-color: green !important;
-    border-color: green !important;
+    background-color: var(--del-green) !important;
+    border-color: var(--del-green) !important;
     border: none;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>") !important;
 }
@@ -311,13 +319,16 @@ svg.rmv-btn:hover {
 }
 
 .btn-primary {
-    background-color: green !important;
-    border: green !important;
+    background-color: var(--del-green) !important;
+    border: var(--del-green) !important;
+    color: var(--bs-dark) !important;
 }
 
 .btn-primary:hover {
-    background-color: white !important;
-    color: green !important;
+    background-color: var(--bs-dark) !important;
+    color: var(--del-green) !important;
+    border: 1px solid var(--bs-light) !important;
+    padding: 5px 11px;
 }
 
 .brand-link {
@@ -326,11 +337,11 @@ svg.rmv-btn:hover {
 }
 
 .brand-link:hover {
-    color: green !important;
+    color: var(--del-green) !important;
 }
 
 .link-std {
-    color: green !important;
+    color: var(--del-green) !important;
     text-decoration: none !important;
 }
 
@@ -339,11 +350,11 @@ svg.rmv-btn:hover {
 }
 
 footer a {
-    color: green !important;
+    color: var(--del-green) !important;
 }
 
 footer a:hover {
-    color: white !important;
+    color: var(--bs-light) !important;
 }
 
 #logo {
