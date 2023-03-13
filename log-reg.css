@@ -1,5 +1,6 @@
 :root {
     --del-green: #00ba00;
+    --del-gray: #2f343a
 }
 
 html, body {
@@ -46,7 +47,7 @@ footer {
     padding: 25px;
     border-radius: 15px;
     max-width: 350px;
-    background-color: #2f343a;
+    background-color: var(--del-gray);
 }
 
 .subtitle {

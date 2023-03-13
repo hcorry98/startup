@@ -1,5 +1,6 @@
 :root {
     --del-green: #00ba00;
+    --del-gray: #2f343a;
 }
 
 html, body {
@@ -45,8 +46,8 @@ main {
 }
 
 main hr {
-    width: 93%;
-    max-width: 800px;
+    width: calc(90vw - 20px);
+    max-width: 780px;
     margin-top: 30px;
 }
 
@@ -109,7 +110,7 @@ h2 {
 
     padding: 15px;
     border-radius: 5px;
-    background-color: #2f343a;
+    background-color: var(--del-gray);
 }
 
 .subtitle div {
@@ -139,7 +140,7 @@ h2 {
 .clickable-div {
     margin-top: 15px;
     border-radius: 5px;
-    background-color: #2f343a;
+    background-color: var(--del-gray);
 }
 
 .clickable-div + .clickable-div {
@@ -189,13 +190,13 @@ h2 {
     padding: 15px;
     padding-bottom: 10px;
     border-radius: 5px;
-    background-color: #2f343a;
+    background-color: var(--del-gray);
 }
 
 .project-progress {
     min-width: 300px;
-    width: 90vw;
-    max-width: 800px;
+    width: calc(90vw - 30px);
+    max-width: 770px;
     margin-top: 10px;
 }
 
@@ -227,7 +228,7 @@ h2 {
     padding: 15px;
     padding-bottom: 0px;
     border-radius: 5px;
-    background-color: #2f343a;
+    background-color: var(--del-gray);
 }
 
 
@@ -246,38 +247,49 @@ h2 {
     min-width: 300px;
     width: 90vw;
     max-width: 800px;
+    --bs-accordion-border-width: 0px !important;
 }
 
-.accordion-item{
-    border-bottom-color: var(--del-green) !important;
+.accordion-button.collapsed {
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--del-green) !important;
+}
+
+.accordion-item:last-child .accordion-button{
+    padding-bottom: 14px;
+    border: none !important;
 }
 
 .accordion-button:not(.collapsed) {
-    color: var(--bs-light)  !important;
+    color: var(--bs-dark)  !important;
     background-color: var(--del-green) !important;
 }
 
 .accordion-button:link, .accordion-button:visited, .accordion-button:hover, .accordion-button:active  {
     text-decoration: none !important;
-    border: hidden !important;
-    border-color: var(--bs-light) !important;
     box-shadow: 0px !important;   
 }
 
 .accordion-button:focus {
     z-index: 3;
-    border-color: var(--bs-light) !important;
     outline: 0;
     box-shadow: none !important;
+    
 }
 
 .accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--bs-dark)'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
     transform: rotate(180deg)
 }
 
 .accordion-body {
     padding: 0 !important;
+}
+
+.list-group-item {
+    background-color: var(--del-gray) !important;
+    color: var(--bs-light) !important;
+    border-color: rgba(var(--bs-light-rgb), 0.25) !important;
 }
 
 
@@ -321,8 +333,15 @@ h2 {
     justify-content: start;
 }
 
-.task svg {
+.task svg:first-child {
     margin-right: 10px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.task svg:nth-child(2) {
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .completed {
@@ -342,7 +361,8 @@ h2 {
 
 
 svg.rmv-btn:hover {
-    fill: red;
+    color: red;
+    cursor: pointer;
 }
 
 .btn-primary {
