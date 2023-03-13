@@ -46,6 +46,10 @@ the shape of the buttons for Simon.
 
 I learned how to combine Bootstrap with CSS to achieve the look and feel we want while maintaining the web standards. I also learned how to use CSS to override the typical Bootstrap appearance using `!important`. I also experienced how using HTML and CSS together can simplify a lot of the code instead of just trying to use HTML by itself (especially without Bootstrap). The `play` page is a perfect example of this.
 
+### JavaScript
+
+I learned how to store items in the local cache using the localStorage. This allows for persistent data between sessions and between web pages. I also learned how to use classes and functions to be able to fully implement the game, keep track of the score, and push the final result to the cache. It was very interesting to see when to use await/async with promises to ensure everything happens in the correct order. I also liked seeing how the allowPlayer variable was used to pause the user's ability to input while the program executed calculations and then resumed allowed input.
+
 ## Delligator
 
 **Deployment Command:**
