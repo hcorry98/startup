@@ -75,6 +75,14 @@ footer hr {
 
 #settings-gear {
     margin-top: 18px;
+    display: flex;
+    width: 2.25em;
+    height: 2.25em;
+    color: var(--bs-light);
+}
+
+#settings-gear:hover svg {
+    color: var(--del-green);
 }
 
 hr.solid {
@@ -113,7 +121,8 @@ h2 {
 
 .subtitle .project-icon {
     flex: 0 2em;
-    min-width: 32px;
+    width: 2em;
+    height: 2em;
 }
 
 .subtitle div h2 {
@@ -163,6 +172,11 @@ h2 {
 
 .project-title img {
     width: 28px;
+}
+
+.project-title svg {
+    width: 1.125em;
+    height: 1.125em;
 }
 
 .project-title h3 {
@@ -351,6 +365,10 @@ svg.rmv-btn:hover {
 
 .brand-link:hover {
     color: var(--del-green) !important;
+}
+
+.brand-link:hover svg {
+    color: var(--bs-light);
 }
 
 .link-std {

@@ -77,6 +77,14 @@ footer hr {
 
 #settings-gear {
     margin-top: 18px;
+    display: flex;
+    width: 2.25em;
+    height: 2.25em;
+    color: var(--bs-light);
+}
+
+#settings-gear:hover svg {
+    color: var(--del-green);
 }
 
 hr.solid {
@@ -115,7 +123,8 @@ h2 {
 
 .subtitle .project-icon {
     flex: 0 2em;
-    min-width: 32px;
+    width: 2em;
+    height: 2em;
 }
 
 .subtitle div h2 {
@@ -197,21 +206,25 @@ h2 {
 #icon-select div {
     flex: 1;
     min-height: 42px;
+    max-height: 42px;
     min-width: 42px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 5px;
     border: solid var(--bs-light) 2px;
 }
 
 #icon-select:hover div {
-    background-color: var(--del-green);
+    border-color: var(--del-green);
+    color: var(--del-green);
 }
 
-#icon-select img {
+#icon-select svg {
     flex: 1;
-    width: 36px;
+    width: 3em;
+    height: 3em;
 }
 
 .modal-body {
@@ -343,12 +356,22 @@ td {
 
 
 
+svg.rmv-btn {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+svg.add-btn {
+    width: 1.5em;
+    height: 1.5em;
+}
+
 svg.rmv-btn:hover {
-    fill: red;
+    color: red;
 }
 
 svg.add-btn:hover {
-    fill: green;
+    color: var(--del-green);
 }
 
 .btn-primary {
