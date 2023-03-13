@@ -124,6 +124,7 @@ h2 {
 }
 
 .create-proj {
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,6 +132,7 @@ h2 {
 }
 
 #create-task {
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -360,17 +362,6 @@ svg.add-btn:hover {
     color: var(--del-green) !important;
     border: 1px solid var(--bs-light) !important;
     padding: 5px 11px;
-}
-
-.btn-tertiary {
-    background-color: var(--bs-light) !important;
-    border: var(--bs-light) !important;
-    color: var(--del-green) !important;
-}
-
-.btn-tertiary:hover {
-    background-color: var(--del-green) !important;
-    color: var(--bs-light) !important;
 }
 
 .brand-link {
