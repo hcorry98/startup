@@ -176,7 +176,7 @@ function CreateProject() {
 
     newProjectName = document.querySelector('#projectName').value;
 
-    projects[newProjectName] = {'icon': icon,'team-members': GetProjectMembers(), 'tasks': [], 'creating': true};
+    projects[newProjectName] = {'icon': icon,'team-members': GetProjectMembers(), 'tasks': []};
     console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
 }

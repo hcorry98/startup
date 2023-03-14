@@ -17,7 +17,7 @@ function createProjects() {
         ["Write instructions", "me", false]
     ]
 
-    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks, 'creating': false};
+    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
 
     name = "DnD";
     icon = "notebook";
@@ -31,7 +31,7 @@ function createProjects() {
         ["Drive", "Thomas", true]
     ]
 
-    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks, 'creating': false};
+    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
 
     name = "Delligator";
     icon = "device-laptop";
@@ -44,7 +44,7 @@ function createProjects() {
         ["Implement CSS", "me", true]
     ]
 
-    projects[name] = {'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks, 'creating': false};
+    projects[name] = {'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};
 
     console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
