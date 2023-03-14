@@ -23,6 +23,7 @@ function LoadProjects() {
 
             let nextProj = document.querySelector("#projProgTmpl").content.cloneNode(true);
 
+            nextProj.querySelector("a").href = "project.html?project=" + name;
             nextProj.querySelector(".project-title h3").textContent = name;
             nextProj.querySelector("svg use").setAttribute('href', ParseIconPath(icon));
             nextProj.querySelector(".my-progress .progress-bar").style = "width: " + myProg + "%";

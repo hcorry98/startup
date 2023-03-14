@@ -167,16 +167,41 @@ h2 {
     max-width: 800px;
 }
 
+.form-section .spacer {
+    width: 20%;
+}
+
+.form-section #nameInput {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .form-section #icon-select {
     flex: 0 8em;
     margin-top: 15px;
-    margin-left: calc(width / 2);
 }
 
 .form-section input {
-    flex: 1;
     max-width: 400px;
+    margin-right: 15px;
 }
+
+.form-section #errorLabel {
+    width: 20%;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+#errorLabel label {
+    font-size: 0.75em;
+}
+
+
 
 
 
