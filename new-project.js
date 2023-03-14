@@ -116,7 +116,7 @@ function CreateProject() {
     }
 
     newProjectName = document.querySelector('#projectName').value;
-    projects[newProjectName] = {'icon': icon, 'my-progress': 0, 'team-progress': 0, 'team-members': GetProjectMembers(), 'tasks': []};
+    projects[newProjectName] = {'icon': icon,'team-members': GetProjectMembers(), 'tasks': [], 'creating': true};
     console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
 }

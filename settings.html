@@ -46,11 +46,39 @@
         <hr class="solid">
 
             <div class="settings-field">
-                <p>
-                    Settings will be added as features are released.
-                </p>
+                <h3>Cache</h3>
+
+                <h4>Projects</h4>
+                <div>
+                    <label>Create sample projects</label>
+                    <button class="btn btn-primary createBtn" id="#createProjectsBtn" onclick="createProjects();toastProjects()">Create</button>
+                </div>
+                <div>
+                    <label>Delete all stored projects</label>
+                    <button class="btn btn-primary" onclick="deleteProjects()">Delete</button>
+                </div>
+                
+                <h4>Past Team Members</h4>
+                <div>
+                    <label>Create sample past team members</label>
+                    <button class="btn btn-primary createBtn" id="#createPastMembersBtn" onclick="createPastMembers();toastMembers()">Create</button>
+                </div>
+                <div>
+                    <label>Delete all past team members</label>
+                    <button class="btn btn-primary" onclick="deletePastMembers()">Delete</button>
+                </div>
             </div>
         </main>
+
+        <div class="toast-container position-absolute p-3 bottom-0 end-0" id="toastPlacement">
+            <div id="settingsToast" class="toast align-items-center text-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                    </div>
+                    <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
 
         <footer class="container-fluid">
             <hr class="solid">
@@ -59,5 +87,8 @@
                 <a href="https://github.com/hcorry98/startup">GitHub</a>
             </div>
         </footer>
+
+        <script src="settings.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
 </html>

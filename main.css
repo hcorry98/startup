@@ -223,12 +223,40 @@ h2 {
 
 .settings-field {
     max-width: 800px;
+    width: 90vw;
     text-align: justify;
     margin-top: 15px;
     padding: 15px;
     padding-bottom: 0px;
     border-radius: 5px;
     background-color: var(--del-gray);
+}
+
+.settings-field h3 {
+    margin-bottom: 30px;
+    border-bottom: rgba(var(--bs-light-rgb), 0.25) solid thin;
+}
+
+.settings-field h4 {
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.settings-field div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.toast-container {
+    margin-bottom: 70px;
+}
+
+#settingsToast {
+    background-color: var(--del-green);
 }
 
 
