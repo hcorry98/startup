@@ -2,6 +2,9 @@ let project;
 let projName;
 let numTasks = 0;
 
+// TODO: Check to see if task already exists
+//       If it does, give error
+
 function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
