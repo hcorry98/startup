@@ -25,7 +25,6 @@ function createProjects() {
     tasks['Print minis'] = {'assigned-to': 'Me', 'completed': false};
     tasks['Write campaign'] = {'assigned-to': 'Brock', 'completed': true};
     tasks['Buy fancy dice'] = {'assigned-to': 'Jake', 'completed': true};
-    tasks['Buy fancy dice'] = {'assigned-to': 'Thomas', 'completed': true};
     tasks['Obtain Manzanita'] = {'assigned-to': 'Jake', 'completed': true};
     tasks['Drive'] = {'assigned-to': 'Thomas', 'completed': true};
 
