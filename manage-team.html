@@ -14,7 +14,6 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
-        <!-- TODO: add JavaScript -->
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
@@ -42,11 +41,9 @@
                     <svg class="project-icon">
                         <use href="/images/icons/school.svg#school" width="100%" height="100%"></use>
                      </svg>
-                    <h2>Class Project - <i>Managing Team</i></h2>
+                    <h2 class="project-name">Class Project</h2><h2><i> - Manage Team</i></h2>
                 </div>
-                <form action="manage-project.html">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+                <a href="manage-project.html?project=" onclick="saveTeam()" id="btn-save-team" class="btn btn-primary">Save</a>
             </div>
 
             <hr class="solid">
@@ -57,26 +54,12 @@
                         <h4>Team Members</h4>
                         <div class="form-section">
                             <div class="members">
-                                <div class="member">
-                                    <label>Jonathan</label>
-                                    <svg class="rmv-btn">
-                                        <use href="/images/circle-minus.svg#circle-minus" width="100%" height="100%"></use>
-                                     </svg>
-                                </div>
-        
-                                <div class="member">
-                                    <label>Hailey</label>
-                                    <svg class="rmv-btn">
-                                        <use href="/images/circle-minus.svg#circle-minus" width="100%" height="100%"></use>
-                                     </svg>
-                                </div>
 
                                 <div>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inviteModal">
                                         Add Team Member
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -84,6 +67,15 @@
             </div>
 
         </main>
+
+        <template id="memberTmpl">
+            <div class="member">
+                <label></label>
+                <svg class="rmv-btn" onclick="removeMember(this)">
+                    <use href="/images/circle-minus.svg#circle-minus" width="100%" height="100%"></use>
+                 </svg>
+            </div>
+        </template>
 
         <footer class="container-fluid">
             <hr class="solid">
@@ -108,17 +100,11 @@
                                 </h5>
                                 <div class="member-form">
                                     <select class="form-select">
-                                        <option disabled selected>
+                                        <option value='default' disabled selected>
                                             Choose team member...
                                         </option>  
-                                        <option>
-                                            Sarah
-                                        </option>
-                                        <option>
-                                            Thomas
-                                        </option>
                                     </select>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                                    <button type="button" onclick="addMember()" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
                                 </div>
                             </div>
 
@@ -132,7 +118,7 @@
                                 </p>
                                 <div class="member-form">
                                     <input type="email" class="form-control" id="inviteEmail" placeholder="example@email.com" /> 
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
+                                    <button type="button" onclick="inviteMember()" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +130,7 @@
             </div>
         </div>
 
+        <script src="manage-team.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
 </html>

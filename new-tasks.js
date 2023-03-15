@@ -66,8 +66,8 @@ function removeTask(el) {
 function createTasks() {
     const newTasks = getNewTasks();
     const tasks = project['tasks'];
-    for (let newTask of newTasks) {
-        tasks.push(newTask);
+    for (const [taskName, task] of Object.entries(newTasks)) {
+        tasks[taskName] = task;
     }
     project['tasks'] = tasks;
 
@@ -81,7 +81,7 @@ function createTasks() {
 }
 
 function getNewTasks() {
-    let newTasks = [];
+    let newTasks = {};
     const newTasksEls = document.querySelectorAll('#new-task-table tbody tr');
     for (let taskEl of newTasksEls) {
         const newTaskName = taskEl.querySelector('input').value;
@@ -93,7 +93,7 @@ function getNewTasks() {
         if (memberSelectEl.selectedIndex != 0) {
             assignedTo = memberSelectEl.options[memberSelectEl.selectedIndex].textContent;
         }
-        newTasks.push([newTaskName, assignedTo]);
+        newTasks[newTaskName] = {'assigned-to': assignedTo, 'completed': false};
     }
     console.log(newTasks);
     return newTasks;

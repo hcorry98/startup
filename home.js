@@ -5,10 +5,6 @@ function LoadProjects() {
         projects = JSON.parse(projectsText);
     }
 
-    console.log(projectsText);
-    console.log(projects);
-    console.log(Object.keys(projects).length);
-
     let mainEl = document.querySelector('body main');
 
     if (Object.keys(projects).length) {
@@ -44,14 +40,14 @@ function calcPercentages(tasks) {
     let myTotal = 0;
     let allCompleted = 0;
     let allTotal = 0;
-    for (task of tasks) {
+    for (const [taskName, task] of Object.entries(tasks)) {
         allTotal++;
-        if (task[2] === true) {
+        if (task['completed'] === true) {
             allCompleted++;
         }
-        if (task[1] === 'Me') {
+        if (task['assigned-to'] === 'Me') {
             myTotal++;
-            if (task[2] === true) {
+            if (task['completed'] === true) {
                 myCompleted++;
             }
         }
@@ -78,9 +74,6 @@ function ParseIconPath(icon) {
     return '/images/icons/' + icon + '.svg#' + icon;
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
-    LoadProjects();
-});
+LoadProjects();
 
 

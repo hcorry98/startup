@@ -68,6 +68,7 @@ function AddMember(name) {
         let selectedValue = selectBox.options[selectBox.selectedIndex].textContent;
         name = selectedValue;
         selectBox.options[selectBox.selectedIndex].remove();
+        selectBox.selectedIndex = 0;
     }
 
     let membersEl = document.querySelector('.members');

@@ -7,42 +7,39 @@ function createProjects() {
 
     name = "Technical Instructions";
     icon = "pencil";
-    teamMembers = ["Me", "Sarah", "Madison", "Luke"]
-    tasks = [
-        ["Take pictures", "Sarah", false],
-        ["Take minutes", "Luke", true],
-        ["Edit minutes", "Me", true],
-        ["Bring supplies", "Sarah", false],
-        ["Assign tasks", "Madison", false],
-        ["Write instructions", "Me", false]
-    ]
+    teamMembers = ["Me", "Sarah", "Madison", "Luke"];
+    tasks['Take pictures'] = {'assigned-to': 'Sarah', 'completed': false};
+    tasks['Take minutes'] = {'assigned-to': 'Luke', 'completed': true};
+    tasks['Edit minutes'] = {'assigned-to': 'Me', 'completed': true};
+    tasks['Bring supplies'] = {'assigned-to': 'Sarah', 'completed': false};
+    tasks['Assign tasks'] = {'assigned-to': 'Madison', 'completed': false};
+    tasks['Write instructions'] = {'assigned-to': 'Me', 'completed': false};
 
     projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
 
+    
     name = "DnD";
     icon = "notebook";
-    teamMembers = ["Me", "Jake", "Thomas", "Brock"]
-    tasks = [
-        ["Print minis", "Me", false],
-        ["Write campaign", "Brock", true],
-        ["Buy fancy dice", "Jake", true],
-        ["Buy fancy dice", "Thomas", true],
-        ["Obtain Manzanita", "Jake", true],
-        ["Drive", "Thomas", true]
-    ]
+    teamMembers = ["Me", "Jake", "Thomas", "Brock"];
+    tasks = {};
+    tasks['Print minis'] = {'assigned-to': 'Me', 'completed': false};
+    tasks['Write campaign'] = {'assigned-to': 'Brock', 'completed': true};
+    tasks['Buy fancy dice'] = {'assigned-to': 'Jake', 'completed': true};
+    tasks['Buy fancy dice'] = {'assigned-to': 'Thomas', 'completed': true};
+    tasks['Obtain Manzanita'] = {'assigned-to': 'Jake', 'completed': true};
+    tasks['Drive'] = {'assigned-to': 'Thomas', 'completed': true};
 
     projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
 
     name = "Delligator";
     icon = "device-laptop";
-    teamMembers = ["Me"]
-    tasks = [
-        ["Implement JavaScript", "Me", false],
-        ["Buy domain name", "Me", true],
-        ["Setup web server", "Me", true],
-        ["Implement HTML", "Me", true],
-        ["Implement CSS", "Me", true]
-    ]
+    teamMembers = ["Me"];
+    tasks = {};
+    tasks['Implement JavaScript'] = {'assigned-to': 'Me', 'completed': false};
+    tasks['Buy domain name'] = {'assigned-to': 'Me', 'completed': true};
+    tasks['Setup web server'] = {'assigned-to': 'Me', 'completed': true};
+    tasks['Implement HTML'] = {'assigned-to': 'Me', 'completed': true};
+    tasks['Implement CSS'] = {'assigned-to': 'Me', 'completed': true};
 
     projects[name] = {'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};
 

@@ -34,18 +34,15 @@ function loadTasks() {
     const myTasks = document.querySelectorAll('.accordion-item ul')[0];
     const teamTasks = document.querySelectorAll('.accordion-item ul')[1];
 
-    console.log(myTasks);
-    console.log(teamTasks);
-
     projTasks = project['tasks'];
 
     const template = document.querySelector('#taskTmpl');
-    for (let task of projTasks) {
+    for (const [taskName, task] of Object.entries(projTasks)) {
         const nextTask = template.content.cloneNode(true);
-        nextTask.querySelector('label').textContent = task[0]
-        nextTask.querySelector('input').checked = task[2];
+        nextTask.querySelector('label').textContent = taskName
+        nextTask.querySelector('input').checked = task['completed'];
 
-        if (task[1] === 'Me') {
+        if (task['assigned-to'] === 'Me') {
             myTasks.appendChild(nextTask);
         } else {
             teamTasks.appendChild(nextTask);
@@ -53,16 +50,36 @@ function loadTasks() {
     }
 }
 
-function changeTaskState() {
+function changeTaskState(toggleEl) {
+    const taskName = toggleEl.parentElement.querySelector('label').textContent;
 
+    if (toggleEl.checked) {
+        completeTask(taskName);
+    } else {
+        unfinishTask(taskName);
+    }
+
+    project['tasks'] = projTasks;
+
+    let projects = {};
+    const projectsText = localStorage.getItem('projects');
+    if (projectsText) {
+        projects = JSON.parse(projectsText);
+    }
+    projects[projName] = project;
+    localStorage.setItem('projects', JSON.stringify(projects));
+
+    updatePercentages();
 }
 
-function completeTask() {
-
+function completeTask(taskName) {
+    const assignedTo = projTasks[taskName]['assigned-to'];
+    projTasks[taskName] = {'assigned-to': assignedTo, 'completed': true};
 }
 
-function unfinishTask() {
-
+function unfinishTask(taskName) {
+    const assignedTo = projTasks[taskName]['assigned-to'];
+    projTasks[taskName] = {'assigned-to': assignedTo, 'completed': false};
 }
 
 function updatePercentages() {
@@ -80,14 +97,14 @@ function calcPercentages() {
     let myTotal = 0;
     let allCompleted = 0;
     let allTotal = 0;
-    for (let task of projTasks) {
+    for (const [taskName, task] of Object.entries(projTasks)) {
         allTotal++;
-        if (task[2] === true) {
+        if (task['completed'] === true) {
             allCompleted++;
         }
-        if (task[1] === 'Me') {
+        if (task['assigned-to'] === 'Me') {
             myTotal++;
-            if (task[2] === true) {
+            if (task['completed'] === true) {
                 myCompleted++;
             }
         }
