@@ -18,12 +18,13 @@ function loadProject() {
     const proj = getProject();
     project = proj;
 
-    document.querySelector('.subtitle h2').textContent = projName;
+    document.querySelector('.project-name').textContent = projName;
 
     const icon = project['icon'];
     document.querySelector('.project-icon use').setAttribute('href', parseIconPath(icon));
 
-    document.querySelector('.subtitle a').setAttribute('href', 'manage-project.html?project=' + projName);
+    document.querySelector('#btn-new-tasks').setAttribute('href', 'manage-tasks.html?project=' + projName);
+    document.querySelector('#btn-man-team').setAttribute('href', 'manage-team.html?project=' + projName);
 
     loadTasks();
 
@@ -45,18 +46,23 @@ function loadTasks() {
         if (task['assigned-to'] === 'Me') {
             myTasks.appendChild(nextTask);
         } else {
+            if (task['assigned-to'] === 'Unassigned') {
+                const iEl = document.createElement('i');
+                iEl.textContent = ' - Unassigned';
+                nextTask.querySelector('div').appendChild(iEl);
+            }
             teamTasks.appendChild(nextTask);
         }
     }
 }
 
 function changeTaskState(toggleEl) {
-    const taskName = toggleEl.parentElement.querySelector('label').textContent;
+    const task = toggleEl.parentElement.querySelector('label');
 
     if (toggleEl.checked) {
-        completeTask(taskName);
+        completeTask(task);
     } else {
-        unfinishTask(taskName);
+        unfinishTask(task);
     }
 
     project['tasks'] = projTasks;
@@ -72,14 +78,24 @@ function changeTaskState(toggleEl) {
     updatePercentages();
 }
 
-function completeTask(taskName) {
+function completeTask(task) {
+    const taskName = task.textContent;
     const assignedTo = projTasks[taskName]['assigned-to'];
     projTasks[taskName] = {'assigned-to': assignedTo, 'completed': true};
+
+    if (assignedTo === 'Unassigned') {
+        task.parentElement.querySelector('i').classList.add('completed');
+    }
 }
 
-function unfinishTask(taskName) {
+function unfinishTask(task) {
+    const taskName = task.textContent;
     const assignedTo = projTasks[taskName]['assigned-to'];
     projTasks[taskName] = {'assigned-to': assignedTo, 'completed': false};
+
+    if (assignedTo === 'Unassigned') {
+        task.parentElement.querySelector('i').classList.remove('completed');
+    }
 }
 
 function updatePercentages() {
@@ -129,6 +145,21 @@ function calcPercentages() {
 
 function parseIconPath(icon) {
     return '/images/icons/' + icon + '.svg#' + icon;
+}
+
+function manage() {
+    const manageDiv = document.querySelector('.manage-btns');
+    const manageBtn = document.querySelector('#btn-man-proj');
+    const manageSubtitle = document.querySelector('.subtitle i');
+    if (manageDiv.style.display === 'flex') {
+        manageDiv.style.display = 'none';
+        manageBtn.textContent = 'Manage';
+        manageSubtitle.textContent = '';
+    } else {
+        manageDiv.style.display = 'flex';
+        manageBtn.textContent = 'Save';
+        manageSubtitle.textContent = ' - Managing';
+    }
 }
 
 loadProject();

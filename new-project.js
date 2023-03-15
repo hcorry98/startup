@@ -106,7 +106,7 @@ function IsValidEmail(mail)
 
 function validateProjectName() {
     if (IsValidProjectName()) {
-        let newHref = "new-tasks.html?project=" + newProjectName;
+        let newHref = "manage-tasks.html?project=" + newProjectName;
         console.log(newHref);
         document.querySelector(".subtitle a").setAttribute('href', newHref);
         enableCreate();

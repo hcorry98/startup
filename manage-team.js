@@ -26,7 +26,7 @@ function loadProject() {
     const icon = project['icon'];
     document.querySelector('.project-icon use').setAttribute('href', parseIconPath(icon));
 
-    document.querySelector('.subtitle a').setAttribute('href', 'manage-project.html?project=' + projName);
+    document.querySelector('.subtitle a').setAttribute('href', 'project.html?project=' + projName);
 
     initialLoadPastMembers();
     loadMembers();
@@ -60,6 +60,15 @@ function removeMember(svgEl) {
         members.splice(index, 1);
     }
     project['team-members'] = members;
+
+    document.querySelector('.subtitle a').setAttribute('href', 'manage-tasks.html?project=' + projName);
+
+    const tasks = project['tasks'];
+    for (let [taskName, task] of Object.entries(tasks)) {
+        if (task['assigned-to'] === memberToRemove) {
+            task['assigned-to'] = 'Unassigned'
+        }
+    }
 }
 
 function addMember(name) {
@@ -87,6 +96,7 @@ function addMember(name) {
     const members = project['team-members'];
     members.push(name);
     project['team-members'] = members;
+    document.querySelector('.subtitle a').setAttribute('href', 'manage-tasks.html?project=' + projName);
 
     const inviteModalEl = document.querySelector('#inviteModal');
     const inviteModal = bootstrap.Modal.getInstance(inviteModalEl);

@@ -263,7 +263,7 @@ h2 {
 
 .manage-btns {
     margin-top: 30px;
-    display: flex;
+    display: none;
     flex-direction: row;
     gap: 30px;
 }

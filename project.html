@@ -41,9 +41,9 @@
                     <svg class="project-icon">
                         <use href="" width="100%" height="100%"></use>
                      </svg>
-                    <h2></h2>
+                    <h2 class="project-name"></h2><h2><i></i></h2>
                 </div>
-                <a href="manage-project.html?project=" onclick="" id="btn-man-proj" class="btn btn-primary">Manage</a>
+                <button onclick="manage()" id="btn-man-proj" class="btn btn-primary">Manage</button>
             </div>
 
             <hr class="solid">
@@ -69,6 +69,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="manage-btns">
+                <a href="manage-tasks.html?project=" onclick="" id="btn-new-tasks" class="btn btn-primary">Manage Tasks</a>
+                <a href="manage-team.html?project=" onclick="" id="btn-man-team" class="btn btn-primary">Manage Team Members</a>
             </div>
 
             <div class="accordion" id="accordionPanelsStayOpenExample">

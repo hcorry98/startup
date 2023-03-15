@@ -35,7 +35,27 @@ function loadProject() {
 }
 
 function loadTasks() {
+    const accordionEl = document.querySelector('.accordion');
+    const members = project['team-members'];
+    members.push('Unassigned')
+    const memberTemplate = document.querySelector('#memberTmpl');
+    for (const member of members) {
+        const memberSection = memberTemplate.content.cloneNode(true);
+        const accordBtn = memberSection.querySelector('button');
+        const panel = memberSection.querySelector('.accordion-body').parentElement;
 
+        memberSection.querySelector('h2').setAttribute('id', 'panelHeading-' + member);
+        
+        accordBtn.textContent = member;
+        if (member === 'Unassigned') {
+            accordBtn.style.fontStyle = 'italic';
+        }
+        accordBtn.setAttribute('data-bs-target', 'panel-' + member);
+        accordBtn.setAttribute('aria-controls', 'panel-' + member);
+        panel.setAttribute('id', 'panel-' + member);
+        panel.setAttribute('aria-labelledby', 'panelHeading-' + member);
+        accordionEl.appendChild(memberSection);
+    }
 }
 
 function updatePercentages() {
