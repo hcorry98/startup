@@ -42,11 +42,9 @@
                     <svg class="project-icon">
                         <use href="/images/icons/school.svg#school" width="100%" height="100%"></use>
                      </svg>
-                    <h2>Class Project - <i>New Tasks</i></h2>
+                    <h2 class="project-name">Class Project</h2><h2><i> - New Tasks</i></h2>
                 </div>
-                <form action="project.html">
-                    <button type="submit" id="btn-new-tasks" class="btn btn-primary">Add Tasks</button>
-                </form>
+                <a href="project.html?project=" onclick="createTasks()" id="btn-new-tasks" class="btn btn-primary">Add Tasks</a>
             </div>
 
             <hr class="solid">
@@ -56,48 +54,52 @@
                     <div class="fields">
                         <div class="form-section">
                             <table class="table text-light" id="new-task-table">
-                                <tr>
-                                    <th>
-                                        <h5>Task Name</h5>
-                                    </th>
-                                    <th>
-                                        <h5>Assigned Team Member</h5>
-                                    </th>
-                                    <th>
-                                        <svg class="add-btn">
-                                            <use href="/images/circle-plus.svg#circle-plus" width="100%" height="100%"></use>
-                                         </svg>
-                                    </th>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <input type="text" placeholder="New Task" class="form-control" />
-                                    </td>
-
-                                    <td>
-                                        <select class="form-select">
-                                            <option disabled selected>
-                                                Assign team member..
-                                            </option>
-                                            <option>Me</option>
-                                            <option>Jonathan</option>
-                                            <option>Hailey</option>
-                                        </select>
-                                    </td>
-
-                                    <td>
-                                        <svg class="rmv-btn">
-                                            <use href="/images/circle-minus.svg#circle-minus" width="100%" height="100%"></use>
-                                         </svg>
-                                    </td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <h5>Task Name</h5>
+                                        </th>
+                                        <th>
+                                            <h5>Assigned Team Member</h5>
+                                        </th>
+                                        <th>
+                                            <svg class="add-btn" onclick="addTask()">
+                                                <use href="/images/circle-plus.svg#circle-plus" width="100%" height="100%"></use>
+                                             </svg>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </form>
             </div>
         </main>
+
+        <template id="newTaskTmpl">
+            <tr>
+                <td>
+                    <input type="text" placeholder="New Task" class="form-control" />
+                </td>
+
+                <td>
+                    <select class="form-select">
+                        <option disabled selected>
+                            Assign team member..
+                        </option>
+                    </select>
+                </td>
+
+                <td>
+                    <svg class="rmv-btn" onclick="removeTask(this)">
+                        <use href="/images/circle-minus.svg#circle-minus" width="100%" height="100%"></use>
+                     </svg>
+                </td>
+            </tr>
+        </template>
 
         <footer class="container-fluid">
             <hr class="solid">
@@ -107,6 +109,7 @@
             </div>
         </footer>
 
+        <script src='new-tasks.js'></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
 </html>

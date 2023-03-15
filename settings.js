@@ -7,23 +7,23 @@ function createProjects() {
 
     name = "Technical Instructions";
     icon = "pencil";
-    teamMembers = ["me", "Sarah", "Madison", "Luke"]
+    teamMembers = ["Me", "Sarah", "Madison", "Luke"]
     tasks = [
         ["Take pictures", "Sarah", false],
         ["Take minutes", "Luke", true],
-        ["Edit minutes", "me", true],
+        ["Edit minutes", "Me", true],
         ["Bring supplies", "Sarah", false],
         ["Assign tasks", "Madison", false],
-        ["Write instructions", "me", false]
+        ["Write instructions", "Me", false]
     ]
 
     projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
 
     name = "DnD";
     icon = "notebook";
-    teamMembers = ["me", "Jake", "Thomas", "Brock"]
+    teamMembers = ["Me", "Jake", "Thomas", "Brock"]
     tasks = [
-        ["Print minis", "me", false],
+        ["Print minis", "Me", false],
         ["Write campaign", "Brock", true],
         ["Buy fancy dice", "Jake", true],
         ["Buy fancy dice", "Thomas", true],
@@ -35,13 +35,13 @@ function createProjects() {
 
     name = "Delligator";
     icon = "device-laptop";
-    teamMembers = ["me"]
+    teamMembers = ["Me"]
     tasks = [
-        ["Implement JavaScript", "me", false],
-        ["Buy domain name", "me", true],
-        ["Setup web server", "me", true],
-        ["Implement HTML", "me", true],
-        ["Implement CSS", "me", true]
+        ["Implement JavaScript", "Me", false],
+        ["Buy domain name", "Me", true],
+        ["Setup web server", "Me", true],
+        ["Implement HTML", "Me", true],
+        ["Implement CSS", "Me", true]
     ]
 
     projects[name] = {'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};

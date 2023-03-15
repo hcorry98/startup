@@ -49,7 +49,7 @@ function calcPercentages(tasks) {
         if (task[2] === true) {
             allCompleted++;
         }
-        if (task[1] === 'me') {
+        if (task[1] === 'Me') {
             myTotal++;
             if (task[2] === true) {
                 myCompleted++;
