@@ -14,7 +14,6 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
-        <!-- TODO: add JavaScript -->
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
@@ -40,13 +39,11 @@
             <div class="subtitle">
                 <div>
                     <svg class="project-icon">
-                        <use href="/images/icons/school.svg#school" width="100%" height="100%"></use>
+                        <use href="" width="100%" height="100%"></use>
                      </svg>
-                    <h2>Class Project - <i>Managing</i></h2>
+                    <h2 class="project-name"></h2><h2><i> - Managing</i></h2>
                 </div>
-                <form action="project.html">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+                <a href="project.html?project=" onclick="" id="btn-save-proj" class="btn btn-primary">Save</a>
             </div>
 
             <hr class="solid">
@@ -55,36 +52,28 @@
                 <div class="project-progress">
                     <div class="my-progress">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="progress-percent">
                             <p>My Progress</p>
-                            <p>35%</p>
+                            <p>0%</p>
                         </div>
                     </div>
                     <div class="team-progress">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="progress-percent">
                             <p>Team Progress</p>
-                            <p>20%</p>
+                            <p>0%</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="manage-btns">
-                <form action="new-tasks.html">
-                    <button class="btn btn-primary">
-                        Create New Tasks
-                    </button>
-                </form>
-                <form action="manage-team.html">
-                    <button class="btn btn-primary">
-                        Manage Team Members
-                    </button>
-                </form>
+                <a href="new-tasks.html?project=" onclick="" id="btn-new-tasks" class="btn btn-primary">Create New Tasks</a>
+                <a href="manage-team.html?project=" onclick="" id="btn-man-team" class="btn btn-primary">Manage Team Members</a>
             </div>
 
             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -246,6 +235,7 @@
             </div>
         </footer>
 
+        <script src="manage-project.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
 </html>
