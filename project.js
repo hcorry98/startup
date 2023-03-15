@@ -49,6 +49,9 @@ function loadTasks() {
             if (task['assigned-to'] === 'Unassigned') {
                 const iEl = document.createElement('i');
                 iEl.textContent = ' - Unassigned';
+                if (task['completed']) {
+                    iEl.classList.add('completed');
+                }
                 nextTask.querySelector('div').appendChild(iEl);
             }
             teamTasks.appendChild(nextTask);
