@@ -124,8 +124,7 @@ input {
 }
 
 #logo {
-    width: 80px;
-    height: 80px;
+    height: 2em;
 }
 
 @media (max-height: 570px) {
