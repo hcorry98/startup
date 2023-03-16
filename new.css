@@ -25,20 +25,25 @@ header {
     flex: 0 40px;
     display: flex;
     flex-direction: column;
-    font-family: AlbulaProBold;
 }
 
 header div {
     display: flex;
     flex-direction: row;
-    margin: 0 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 5px;
 }
 
-header span {
-    flex: 1 100%;
+header a {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+header a h1 {
+    font-family: AlbulaProBold;
+    font-size: 2em;
 }
 
 header hr {
@@ -75,7 +80,6 @@ footer hr {
 
 
 #settings-gear {
-    margin-top: 1.4em;
     display: flex;
     width: 2.25em;
     height: 2.25em;
@@ -433,8 +437,8 @@ footer a:hover {
 }
 
 #logo {
-    width: 80px;
-    height: 80;
+    height: 2em;
+    margin-right: 1em;
 }
 
 @media (max-height: 570px) {
