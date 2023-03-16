@@ -91,7 +91,7 @@ function InviteMember() {
         alert('Please enter a valid email address.');
         return false;
     }
-    AddPastMember(email + " (Pending...)");
+    // AddPastMember(email + " (Pending...)");
     AddMember(email + " (Pending...)");
 }
 
