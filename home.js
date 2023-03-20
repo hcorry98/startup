@@ -48,6 +48,7 @@ function LoadProjects() {
     }
 
     const justLoggedIn = localStorage.getItem("justLoggedIn")
+
     if (justLoggedIn === "true") {
         localStorage.setItem('justLoggedIn', "false");
         toastWelcome();
