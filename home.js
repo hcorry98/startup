@@ -1,3 +1,16 @@
+function toastWelcome() {
+    let toastEl = document.getElementById("welcomeToast");
+
+    let myToast = bootstrap.Toast.getOrCreateInstance(toastEl, {
+        delay: 3000
+    });
+
+    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+
+    toastEl.querySelector(".toast-body").textContent = "Welcome " + curUser + "!";
+    myToast.show();
+}
+
 function LoadProjects() {
     let projects = {};
     const projectsText = localStorage.getItem('projects');
@@ -32,6 +45,12 @@ function LoadProjects() {
         const pEl = document.createElement('p');
         pEl.innerHTML = '<p>Create a project to start.</p>';
         mainEl.appendChild(pEl);
+    }
+
+    const justLoggedIn = localStorage.getItem("justLoggedIn")
+    if (justLoggedIn === "true") {
+        localStorage.setItem('justLoggedIn', "false");
+        toastWelcome();
     }
 }
 

@@ -259,8 +259,8 @@ h2 {
     margin-bottom: 70px;
 }
 
-#settingsToast {
-    background-color: var(--del-green);
+.toast {
+    background-color: var(--del-green) !important;
 }
 
 
