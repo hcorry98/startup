@@ -41,10 +41,15 @@ function loadTasks() {
     for (const [taskName, task] of Object.entries(projTasks)) {
         const nextTask = template.content.cloneNode(true);
         nextTask.querySelector('label').textContent = taskName
-        nextTask.querySelector('input').checked = task['completed'];
+        const isCompleted = task['completed']
+        nextTask.querySelector('input').checked = isCompleted;
 
         if (task['assigned-to'] === 'Me') {
-            myTasks.appendChild(nextTask);
+            if (isCompleted || !myTasks.hasChildNodes()) {
+                myTasks.appendChild(nextTask);
+            } else {
+                myTasks.insertBefore(nextTask, myTasks.firstChild)
+            }
         } else {
             if (task['assigned-to'] === 'Unassigned') {
                 const iEl = document.createElement('i');
@@ -54,7 +59,11 @@ function loadTasks() {
                 }
                 nextTask.querySelector('div').appendChild(iEl);
             }
-            teamTasks.appendChild(nextTask);
+            if (isCompleted || !teamTasks.hasChildNodes()) {
+                teamTasks.appendChild(nextTask);
+            } else {
+                teamTasks.insertBefore(nextTask, teamTasks.firstChild)
+            }
         }
     }
 }
@@ -89,6 +98,10 @@ function completeTask(task) {
     if (assignedTo === 'Unassigned') {
         task.parentElement.querySelector('i').classList.add('completed');
     }
+
+    const taskItem = task.parentElement.parentElement
+    const listOfTasks = taskItem.parentElement
+    listOfTasks.appendChild(taskItem)
 }
 
 function unfinishTask(task) {
@@ -99,6 +112,10 @@ function unfinishTask(task) {
     if (assignedTo === 'Unassigned') {
         task.parentElement.querySelector('i').classList.remove('completed');
     }
+
+    const taskItem = task.parentElement.parentElement
+    const listOfTasks = taskItem.parentElement
+    listOfTasks.insertBefore(taskItem, listOfTasks.firstChild)
 }
 
 function updatePercentages() {

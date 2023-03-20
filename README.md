@@ -59,9 +59,15 @@ I learned how to store items in the local cache using the localStorage. This all
 
 **What I've Learned:**
 
-I've learned how to utilize various components and form from Bootstrap 5. I've also learned how to use CSS to alter the color and behavior of any element on the page. I've practiced using Chrome's debugging tools to understand why my code is behaving a certian way. I've also learned that some Bootstrap elements need JavaScript to function, and I've learned how to include that script.
+***HTML & CSS***
 
-I've learned how to utilize `div`s along with `display`s to achieve the lookout and layout I want. I've learned how to design the page to work on full-screen dispalys, resizable displays, and on mobile displays. I've also learned how to add `hover` and `acitve` design elements to my components.
+I've learned how to utilize various components and form from Bootstrap 5. I've also learned how to use CSS to alter the color and behavior of any element on the page. I've practiced using Chrome's debugging tools to understand why my code is behaving a certain way. I've also learned that some Bootstrap elements need JavaScript to function, and I've learned how to include that script.
+
+I've learned how to utilize `div`s along with `display`s to achieve the lookout and layout I want. I've learned how to design the page to work on full-screen displays, resizable displays, and on mobile displays. I've also learned how to add `hover` and `active` design elements to my components.
+
+***JavaScript***
+
+I've learned how to alter the DOM with javascript to dynamically place and remove elements as the user interacts with my application. I've also learned how to build element templates, clone them, and then append them to a parent element. I've practiced navigating the DOM tree, altering styles and attributes of elements, as well as doing error checking and logic to ensure the user's experience is as intended. I've also practiced using the cache to load and set variables to provide temporary persistent data.
 
 **Elevator Pitch:**
 
