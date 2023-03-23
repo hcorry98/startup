@@ -50,6 +50,10 @@ I learned how to combine Bootstrap with CSS to achieve the look and feel we want
 
 I learned how to store items in the local cache using the localStorage. This allows for persistent data between sessions and between web pages. I also learned how to use classes and functions to be able to fully implement the game, keep track of the score, and push the final result to the cache. It was very interesting to see when to use await/async with promises to ensure everything happens in the correct order. I also liked seeing how the allowPlayer variable was used to pause the user's ability to input while the program executed calculations and then resumed allowed input.
 
+### Service
+
+Using Node.js with Express made it incredibly easy to implement local services as well as external services. By altering the already existing JavaScript functions to use the fetch function and await on the responses, we could produce the same output while accessing the web application rather than the JavaScript application.
+
 ## Delligator
 
 **Deployment Command:**
