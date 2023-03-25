@@ -54,6 +54,10 @@ I learned how to store items in the local cache using the localStorage. This all
 
 Using Node.js with Express made it incredibly easy to implement local services as well as external services. By altering the already existing JavaScript functions to use the fetch function and await on the responses, we could produce the same output while accessing the web application rather than the JavaScript application.
 
+### MongoDB
+
+It's best to set environment variables to connect to the database so that your username, password, and hostname aren't exposed to the public. You can use Atlas to view the collections of documents in the database to make sure data is persisting correctly. If you run into errors, you can ssh into the EC2 instance, check the hosted process using `pm2 ls`, restart the service if necessary (e.g. `pm2 restart simon`), and monitor the process during execution using `pm2 monit`. This will help the debugging process to identify what is going on.
+
 ## Delligator
 
 **Deployment Command:**
