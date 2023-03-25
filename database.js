@@ -18,7 +18,7 @@ function addProject(project) {
 }
 
 function getProjects() {
-    const curUser = 'TODO';
+    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
     const query = {user: curUser};
     const options = {
         sort: {projectName: 1}
