@@ -50,7 +50,7 @@ function createProjects() {
 async function saveProject(project) {
     try {
         const response = await fetch('/api/project', {
-            method: 'POST',
+            method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
         });
@@ -74,12 +74,18 @@ function updateProjectsLocal(newProject) {
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-function deleteProjects() {
+async function deleteProjects() {
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {
         return false;
     }
-    localStorage.removeItem('projects');
+    try {
+        await fetch('/api/projects', {
+            method: 'DELETE'
+        });
+    } finally {
+        localStorage.removeItem('projects');
+    }
 }
 
 

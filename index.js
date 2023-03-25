@@ -15,16 +15,34 @@ apiRouter.get('/projects', async(_req, res) => {
     res.send(projects);
 });
 
-apiRouter.get('/project', async(_req, res) => {
-    const projName = _req.query.project;
+apiRouter.get('/project', async(req, res) => {
+    const projName = req.query.project;
     const project = await DB.getProject(projName);
     res.send(project);
 });
 
-apiRouter.post('/project', async (req, res) => {
+apiRouter.put('/project', async (req, res) => {
     DB.addProject(req.body);
     const projects = await DB.getProjects();
     res.send(projects);
+});
+
+apiRouter.post('/project', async (req, res) => {
+    const projName = req.query.project;
+    DB.updateProject(projName, req.body);
+    const projects = await DB.getProjects();
+    res.send(projects);
+});
+
+apiRouter.delete('/projects', (_req, _res) => {
+    DB.deleteProjects();
+});
+
+apiRouter.delete('/project', async (req, res) => {
+    const projName = req.query.project;
+    DB.deleteProject(projName)
+    const projects = await DB.getProjects();
+    res.send(projects)
 });
 
 app.use((_req, res) => {
