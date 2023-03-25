@@ -11,13 +11,32 @@ function toastWelcome() {
     myToast.show();
 }
 
-function LoadProjects() {
+async function LoadProjects() {
     let projects = {};
-    const projectsText = localStorage.getItem('projects');
-    if (projectsText) {
-        projects = JSON.parse(projectsText);
+
+    try {
+        const response = await fetch('/api/projects');
+        projects = await response.json();
+
+        localStorage.setItem('projects', JSON.stringify(projects));
+    } catch {
+        const projectsText = localStorage.getItem('projects');
+        if (projectsText) {
+            projects = JSON.parse(projectsText);
+        }
     }
 
+    displayProjects(projects)
+
+    const justLoggedIn = localStorage.getItem("justLoggedIn")
+
+    if (justLoggedIn === "true") {
+        localStorage.setItem('justLoggedIn', "false");
+        toastWelcome();
+    }
+}
+
+function displayProjects(projects) {
     let mainEl = document.querySelector('body main');
 
     if (Object.keys(projects).length) {
@@ -45,13 +64,6 @@ function LoadProjects() {
         const pEl = document.createElement('p');
         pEl.innerHTML = '<p>Create a project to start.</p>';
         mainEl.appendChild(pEl);
-    }
-
-    const justLoggedIn = localStorage.getItem("justLoggedIn")
-
-    if (justLoggedIn === "true") {
-        localStorage.setItem('justLoggedIn', "false");
-        toastWelcome();
     }
 }
 

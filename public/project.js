@@ -2,21 +2,25 @@ let projName;
 let project;
 let projTasks;
 
-function getProject() {
+async function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
-    let projects = {};
-    const projectText = localStorage.getItem('projects');
-    if (projectText) {
-        projects = JSON.parse(projectText);
+
+    try {
+        const response = await fetch(`/api/project?${projName}`);
+        project = await response.json();
+    } catch {
+        const projectsText = localStorage.getItem('projects');
+        if (projectsText) {
+            projects = JSON.parse(projectsText);
+        }
+        project = projects[projName]
     }
-    return projects[projName];
 }
 
 function loadProject() {
-    const proj = getProject();
-    project = proj;
+    getProject();
 
     document.querySelector('.project-name').textContent = projName;
 

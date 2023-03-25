@@ -19,7 +19,7 @@ function addProject(project) {
 
 function getProjects() {
     const curUser = localStorage.getItem('userName') ?? 'Mystery User';
-    const query = {user: curUser};
+    const query = {'user': curUser};
     const options = {
         sort: {projectName: 1}
     };
@@ -27,4 +27,11 @@ function getProjects() {
     return cursor.toArray();
 }
 
-module.exports = {addProject, getProjects}
+function getProject(projName) {
+    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    const query = {'user': curUser, 'project-name': projName};
+    const cursor = projectCollection.findOne(query);
+    return cursor.toArray();
+}
+
+module.exports = {addProject, getProjects, getProject}

@@ -15,10 +15,16 @@ apiRouter.get('/projects', async(_req, res) => {
     res.send(projects);
 });
 
+apiRouter.get('/project', async(_req, res) => {
+    const projName = _req.query.project;
+    const project = await DB.getProject(projName);
+    res.send(project);
+});
+
 apiRouter.post('/project', async (req, res) => {
     DB.addProject(req.body);
     const projects = await DB.getProjects();
-    res.send(scores);
+    res.send(projects);
 });
 
 app.use((_req, res) => {

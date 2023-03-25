@@ -1,9 +1,11 @@
 function createProjects() {
-    let projects = {};
+    let project;
     let name = '';
     let icon = '';
     let teamMembers = [];
     let tasks = {};
+
+    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
 
     name = "Technical Instructions";
     icon = "pencil";
@@ -15,9 +17,9 @@ function createProjects() {
     tasks['Assign tasks'] = {'assigned-to': 'Madison', 'completed': false};
     tasks['Write instructions'] = {'assigned-to': 'Me', 'completed': false};
 
-    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    saveProject(project);
 
-    
     name = "DnD";
     icon = "notebook";
     teamMembers = ["Me", "Jake", "Thomas", "Brock"];
@@ -28,7 +30,8 @@ function createProjects() {
     tasks['Obtain Manzanita'] = {'assigned-to': 'Jake', 'completed': true};
     tasks['Drive'] = {'assigned-to': 'Thomas', 'completed': true};
 
-    projects[name] = {'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    saveProject(project);
 
     name = "Delligator";
     icon = "device-laptop";
@@ -40,9 +43,34 @@ function createProjects() {
     tasks['Implement HTML'] = {'assigned-to': 'Me', 'completed': true};
     tasks['Implement CSS'] = {'assigned-to': 'Me', 'completed': true};
 
-    projects[name] = {'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};
+    project =  {'user': curUser, 'project-name': name, 'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};
+    saveProject(project);
+}
 
-    console.log(projects);
+async function saveProject(project) {
+    try {
+        const response = await fetch('/api/project', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(project),
+        });
+
+        const projects = await response.json();
+        localStorage.setItem('projects', JSON.stringify(projects));
+    } catch {
+        updateProjectsLocal(project);
+    }
+}
+
+function updateProjectsLocal(newProject) {
+    let projects = {};
+    const projectsText = localStorage.getItem('projects');
+    if (projectsText) {
+        projects.JSON.parse(projectsText);
+    }
+
+    projects[newProject['name']] = newProject;
+
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
