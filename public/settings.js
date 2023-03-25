@@ -81,7 +81,8 @@ async function deleteProjects() {
     }
     try {
         await fetch('/api/projects', {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {'content-type': 'application/json'},
         });
     } finally {
         localStorage.removeItem('projects');
