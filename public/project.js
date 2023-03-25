@@ -72,7 +72,7 @@ function loadTasks() {
     }
 }
 
-function changeTaskState(toggleEl) {
+async function changeTaskState(toggleEl) {
     const task = toggleEl.parentElement.querySelector('label');
 
     if (toggleEl.checked) {
@@ -84,12 +84,22 @@ function changeTaskState(toggleEl) {
     project['tasks'] = projTasks;
 
     let projects = {};
-    const projectsText = localStorage.getItem('projects');
-    if (projectsText) {
-        projects = JSON.parse(projectsText);
+    try {
+        const response = await fetch(`/api/project${projName}`, {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(project),
+        });
+        projects = await response.json();
+        localStorage.setItem('projects', JSON.stringify(projects));
+    } catch {
+        const projectsText = localStorage.getItem('projects');
+        if (projectsText) {
+            projects = JSON.parse(projectsText);
+        }
+        projects[projName] = project;
+        localStorage.setItem('projects', JSON.stringify(projects));
     }
-    projects[projName] = project;
-    localStorage.setItem('projects', JSON.stringify(projects));
 
     updatePercentages();
 }
