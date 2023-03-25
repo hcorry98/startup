@@ -11,7 +11,7 @@ function ParseIconPath(path) {
 }
 
 function ParseSvgPath() {
-    return "/images/icons/" + icon + ".svg#" + icon;
+    return "images/icons/" + icon + ".svg#" + icon;
 }
 
 function SetIcon() {

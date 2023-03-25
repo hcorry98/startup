@@ -14,7 +14,7 @@ function getProject() {
 }
 
 function parseIconPath(icon) {
-    return '/images/icons/' + icon + '.svg#' + icon;
+    return 'images/icons/' + icon + '.svg#' + icon;
 }
 
 function loadProject() {

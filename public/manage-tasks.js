@@ -74,7 +74,7 @@ function addTask() {
         useEl.setAttribute('href', '');
     } else if (numTasks === 1) {
         const useEl = document.querySelectorAll('#task-table use')[1];
-        useEl.setAttribute('href', '/images/circle-minus.svg#circle-minus');
+        useEl.setAttribute('href', 'images/circle-minus.svg#circle-minus');
     }
 
     const teamMembers = project['team-members']
@@ -146,7 +146,7 @@ function getNewTasks() {
 }
 
 function parseIconPath(icon) {
-    return '/images/icons/' + icon + '.svg#' + icon;
+    return 'images/icons/' + icon + '.svg#' + icon;
 }
 
 loadProject();
