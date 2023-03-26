@@ -7,8 +7,10 @@ async function getProject() {
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
+    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+
     try {
-        const response = await fetch(`/api/project?${projName}`);
+        const response = await fetch(`/api/project/${curUser}/${projName}`);
         project = await response.json();
     } catch {
         const projectsText = localStorage.getItem('projects');

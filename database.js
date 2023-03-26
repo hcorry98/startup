@@ -13,18 +13,14 @@ const url = `mongodb+srv://${userName}:${password}@${hostname}`;
 const client = new MongoClient(url);
 const projectCollection = client.db('startup').collection('project');
 
-function getProjects() {
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+function getProjects(curUser) {
     const query = {'user': curUser};
-    const options = {
-        sort: {projectName: 1}
-    };
-    const cursor = projectCollection.find(query);
+    const options = {sort: {'project-name': 1}};
+    const cursor = projectCollection.find(query, options);
     return cursor.toArray();
 }
 
-function getProject(projName) {
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+function getProject(curUser, projName) {
     const query = {'user': curUser, 'project-name': projName};
     const cursor = projectCollection.findOne(query);
     return cursor.toArray();
@@ -33,20 +29,18 @@ function addProject(project) {
     projectCollection.insertOne(project);
 }
 
-function updateProject(projName, project) {
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+function updateProject(curUser, projName, project) {
     const query = {'user': curUser, 'project-name': projName};
     projectCollection.updateOne(query, project);
 }
 
-function deleteProjects() {
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+function deleteProjects(curUser) {
     const query = {'user': curUser};
+    console.log(curUser);
     projectCollection.deleteMany(query);
 }
 
-function deleteProject(projName) {
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+function deleteProject(curUser, projName) {
     const query = {'user': curUser, 'project-name': projName};
     projectCollection.deleteOne(query);
 }

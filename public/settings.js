@@ -1,3 +1,5 @@
+let curUser = '';
+
 function createProjects() {
     let project;
     let name = '';
@@ -5,7 +7,7 @@ function createProjects() {
     let teamMembers = [];
     let tasks = {};
 
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    curUser = localStorage.getItem('userName') ?? 'Mystery User';
 
     name = "Technical Instructions";
     icon = "pencil";
@@ -49,7 +51,7 @@ function createProjects() {
 
 async function saveProject(project) {
     try {
-        const response = await fetch('/api/project', {
+        const response = await fetch(`/api/project/${curUser}`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -75,12 +77,15 @@ function updateProjectsLocal(newProject) {
 }
 
 async function deleteProjects() {
+    curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    console.log(curUser);
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {
         return false;
     }
     try {
-        await fetch('/api/projects', {
+        console.log(`/api/projects/${curUser}`);
+        await fetch(`/api/projects/${curUser}`, {
             method: 'DELETE',
             headers: {'content-type': 'application/json'},
         });

@@ -1,3 +1,5 @@
+let curUser = '';
+
 function toastWelcome() {
     let toastEl = document.getElementById("welcomeToast");
 
@@ -5,17 +7,16 @@ function toastWelcome() {
         delay: 3000
     });
 
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
-
     toastEl.querySelector(".toast-body").textContent = "Welcome " + curUser + "!";
     myToast.show();
 }
 
 async function LoadProjects() {
     let projects = {};
+    curUser = localStorage.getItem('userName') ?? 'Mystery User';
 
     try {
-        const response = await fetch('/api/projects');
+        const response = await fetch(`/api/projects/${curUser}`);
         projects = await response.json();
 
         localStorage.setItem('projects', JSON.stringify(projects));
