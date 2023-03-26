@@ -27,8 +27,6 @@ async function LoadProjects() {
         }
     }
 
-    console.log(projects)
-
     displayProjects(projects)
 
     const justLoggedIn = localStorage.getItem("justLoggedIn")
@@ -47,10 +45,6 @@ function displayProjects(projects) {
             const name = project['project-name']
             const icon = project['icon']
             const tasks = project['tasks']
-
-            console.log(name)
-            console.log(icon)
-            console.log(tasks)
 
             const results = calcPercentages(tasks);
             const myProg = results[0];
