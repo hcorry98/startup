@@ -1,5 +1,9 @@
 function login() {
     const usernameEl = document.querySelector("#username");
-    localStorage.setItem("userName", usernameEl.value);
+    let username = usernameEl.value
+    if (username === '') {
+        username = 'public'
+    }
+    localStorage.setItem("userName", username);
     localStorage.setItem("justLoggedIn", "true");
 }

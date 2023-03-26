@@ -7,7 +7,7 @@ async function getProject() {
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    const curUser = localStorage.getItem('userName') ?? 'public';
 
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
@@ -20,7 +20,7 @@ async function getProject() {
         }
         project = projects[projName]
     }
-    console.log(project)
+    delete project._id;
 }
 
 async function loadProject() {
@@ -87,9 +87,10 @@ async function changeTaskState(toggleEl) {
 
     project['tasks'] = projTasks;
 
-    let projects = {};
+    let projects = [];
+    const curUser = localStorage.getItem('userName') ?? 'public';
     try {
-        const response = await fetch(`/api/project${projName}`, {
+        const response = await fetch(`/api/project/${curUser}/${projName}`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -101,7 +102,11 @@ async function changeTaskState(toggleEl) {
         if (projectsText) {
             projects = JSON.parse(projectsText);
         }
-        projects[projName] = project;
+        for (const proj of projects) {
+            if (proj['project-name'] === projName) {
+                proj = project
+            }
+        }
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 

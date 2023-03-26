@@ -7,7 +7,7 @@ function createProjects() {
     let teamMembers = [];
     let tasks = {};
 
-    curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    curUser = localStorage.getItem('userName') ?? 'public';
 
     name = "Technical Instructions";
     icon = "pencil";
@@ -77,7 +77,7 @@ function updateProjectsLocal(newProject) {
 }
 
 async function deleteProjects() {
-    curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    curUser = localStorage.getItem('userName') ?? 'public';
     console.log(curUser);
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {

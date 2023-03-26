@@ -33,7 +33,7 @@ apiRouter.put('/project/:user', async (req, res) => {
 apiRouter.post('/project/:user/:name', async (req, res) => {
     const user = req.params.user;
     const projName = req.params.name;
-    DB.updateProject(projName, req.body);
+    DB.updateProject(user, projName, req.body);
     const projects = await DB.getProjects(user);
     res.send(projects);
 });

@@ -30,7 +30,7 @@ function addProject(project) {
 
 function updateProject(curUser, projName, project) {
     const query = {'user': curUser, 'project-name': projName};
-    projectCollection.updateOne(query, project);
+    projectCollection.replaceOne(query, project);
 }
 
 function deleteProjects(curUser) {
