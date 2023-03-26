@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AlbulaProBold";
-    src: url('assets/fonts/AlbulaProBold/font.woff2') format('woff2'), url('assets/fonts/AlbulaProBold/font.woff') format('woff');
+    src: url('../assets/fonts/AlbulaProBold/font.woff2') format('woff2'), url('../assets/fonts/AlbulaProBold/font.woff') format('woff');
 }
 
 :root {
