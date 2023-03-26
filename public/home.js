@@ -12,7 +12,7 @@ function toastWelcome() {
 }
 
 async function LoadProjects() {
-    let projects = {};
+    let projects = [];
     curUser = localStorage.getItem('userName') ?? 'Mystery User';
 
     try {
@@ -27,6 +27,8 @@ async function LoadProjects() {
         }
     }
 
+    console.log(projects)
+
     displayProjects(projects)
 
     const justLoggedIn = localStorage.getItem("justLoggedIn")
@@ -40,11 +42,15 @@ async function LoadProjects() {
 function displayProjects(projects) {
     let mainEl = document.querySelector('body main');
 
-    if (Object.keys(projects).length) {
-        for (const [projectName, project] of Object.entries(projects)) {
-            const name = projectName;
-            const icon = project.icon;
-            const tasks = project.tasks;
+    if (projects.length) {
+        for (let project of projects) {
+            const name = project['project-name']
+            const icon = project['icon']
+            const tasks = project['tasks']
+
+            console.log(name)
+            console.log(icon)
+            console.log(tasks)
 
             const results = calcPercentages(tasks);
             const myProg = results[0];

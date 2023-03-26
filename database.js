@@ -15,15 +15,14 @@ const projectCollection = client.db('startup').collection('project');
 
 function getProjects(curUser) {
     const query = {'user': curUser};
-    const options = {sort: {'project-name': 1}};
-    const cursor = projectCollection.find(query, options);
+    const cursor = projectCollection.find(query, {_id: 0});
     return cursor.toArray();
 }
 
 function getProject(curUser, projName) {
     const query = {'user': curUser, 'project-name': projName};
-    const cursor = projectCollection.findOne(query);
-    return cursor.toArray();
+    const cursor = projectCollection.findOne(query, {_id: 0});
+    return cursor;
 }
 function addProject(project) {
     projectCollection.insertOne(project);

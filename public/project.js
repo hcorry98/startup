@@ -13,16 +13,18 @@ async function getProject() {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
         project = await response.json();
     } catch {
+        let projects;
         const projectsText = localStorage.getItem('projects');
         if (projectsText) {
             projects = JSON.parse(projectsText);
         }
         project = projects[projName]
     }
+    console.log(project)
 }
 
-function loadProject() {
-    getProject();
+async function loadProject() {
+    await getProject();
 
     document.querySelector('.project-name').textContent = projName;
 
