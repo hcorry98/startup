@@ -39,9 +39,9 @@ async function loadPastMembers() {
 
     try {
         const response = await fetch(`/api/members/${curUser}`);
-        const memberList = response.json();
-        const pastMembers = memberList['members'];
-        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+        memberList = await response.json();
+        pastMembers = memberList['members'];
+        localStorage.setItem('pastMembers', pastMembers);
     } catch {
         const pastMembersText = localStorage.getItem('pastMembers');
         if (pastMembersText) {
@@ -60,7 +60,7 @@ async function addPastMember(memberName) {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
-        const memberList = response.json();
+        const memberList = await response.json();
         const pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
     } catch {

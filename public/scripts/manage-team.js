@@ -183,7 +183,7 @@ async function loadPastMembers() {
 
     try {
         const response = await fetch(`/api/members/${curUser}`);
-        memberList = response.json();
+        memberList = await response.json();
         pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', pastMembers);
     } catch {

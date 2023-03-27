@@ -45,7 +45,7 @@ function createProjects() {
     tasks['Implement HTML'] = {'assigned-to': 'Me', 'completed': true};
     tasks['Implement CSS'] = {'assigned-to': 'Me', 'completed': true};
 
-    project =  {'user': curUser, 'project-name': name, 'icon': icon, 'teamMembers': teamMembers, 'tasks': tasks};
+    project =  {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
 }
 
