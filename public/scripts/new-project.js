@@ -11,7 +11,7 @@ function ParseIconPath(path) {
 }
 
 function ParseSvgPath() {
-    return "images/icons/" + icon + ".svg#" + icon;
+    return "assets/images/icons/" + icon + ".svg#" + icon;
 }
 
 function SetIcon() {
@@ -107,7 +107,6 @@ function IsValidEmail(mail)
 function validateProjectName() {
     if (IsValidProjectName()) {
         let newHref = "manage-tasks.html?project=" + newProjectName;
-        console.log(newHref);
         document.querySelector(".subtitle a").setAttribute('href', newHref);
         enableCreate();
     } else {
@@ -115,28 +114,45 @@ function validateProjectName() {
     }
 }
 
-function IsValidProjectName() {
+async function IsValidProjectName() {
     newProjectName = document.querySelector('#projectName').value;
-    console.log(newProjectName);
     if (newProjectName === '') {
         return false;
     }
 
-    let projects = {};
-    let projectsText = localStorage.getItem('projects');
-    if (projectsText) {
-        projects = JSON.parse(projectsText);
+    if (await projExists(newProjectName)) {
+        nameAlreadyExists();
+        console.log("exists");
+        return false;
+    } else {
+        nameDoesNotExist();
+        return true;
     }
+}
 
-    for (const [name, project] of Object.entries(projects)) {
-        if (newProjectName === name) {
-            nameAlreadyExists();
-            console.log("exists");
+async function projExists(projName) {
+    const curUser = localStorage.getItem('userName') ?? 'public';
+    try {
+        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        project = await response.json();
+        if (project == null) {
             return false;
+        } else {
+            return true;
         }
+    } catch {
+        projects = [];
+        const projectsText = localStorage.getItem('projects');
+        if (projectsText) {
+            projects = JSON.parse(projectsText);
+        }
+        for (proj of projects) {
+            if (proj['project-name'] === projName) {
+                return true;
+            }
+        }
+        return false;
     }
-    nameDoesNotExist();
-    return true;
 }
 
 function disableCreate() {
@@ -169,18 +185,40 @@ function ClearNewMemberFields() {
 }
 
 function CreateProject() {
-    let projects = {};
+    const newProjectName = document.querySelector('#projectName').value;
+
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    const newProject = {'user': curUser, 'project-name': newProjectName, 'icon': icon,'team-members': GetProjectMembers(), 'tasks': []};
+    console.log(projects);
+    saveProject(newProject)
+}
+
+async function saveProject(project) {
+    const curUser = localStorage.getItem('userName') ?? 'public';
+    try {
+        const response = await fetch(`/api/project/${curUser}`, {
+            method: 'PUT',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(project),
+        });
+
+        const projects = await response.json();
+        localStorage.setItem('projects', JSON.stringify(projects));
+    } catch {
+        updateProjectsLocal(project);
+    }
+}
+
+function updateProjectsLocal(newProject) {
+    let projects = [];
     const projectsText = localStorage.getItem('projects');
     if (projectsText) {
-        projects = JSON.parse(projectsText);
+        projects.JSON.parse(projectsText);
     }
 
-    newProjectName = document.querySelector('#projectName').value;
+    projects.push(newProject);
 
-    const curUser = localStorage.getItem('userName') ?? 'Mystery User';
-
-    projects[newProjectName] = {'user': curUser, 'project-name': newProjectName, 'icon': icon,'team-members': GetProjectMembers(), 'tasks': []};
-    console.log(projects);
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 

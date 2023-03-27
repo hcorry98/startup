@@ -1,25 +1,38 @@
 let project;
 let projName;
 
-function getProject() {
+async function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
-    let projects = {};
-    const projectText = localStorage.getItem('projects');
-    if (projectText) {
-        projects = JSON.parse(projectText);
+
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    try {
+        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        project = await response.json();
+    } catch {
+        let projects;
+        const projectsText = localStorage.getItem('projects');
+        if (projectsText) {
+            projects = JSON.parse(projectsText);
+        }
+        for (proj of projects) {
+            if (proj['project-name'] === projName) {
+                project = proj
+                break;
+            }
+        }
     }
-    return projects[projName];
+    delete project._id;
 }
 
 function parseIconPath(icon) {
-    return 'images/icons/' + icon + '.svg#' + icon;
+    return 'assets/images/icons/' + icon + '.svg#' + icon;
 }
 
-function loadProject() {
-    const proj = getProject();
-    project = proj;
+async function loadProject() {
+    await getProject();
 
     document.querySelector('.project-name').textContent = projName;
 
@@ -156,12 +169,33 @@ function loadPastMembers() {
 }
 
 function saveTeam() {
-    let projects = {};
+    saveProject(project)
+}
+
+async function saveProject(project) {
+    const curUser = localStorage.getItem('userName') ?? 'public';
+    try {
+        const response = await fetch(`/api/project/${curUser}/${project['project-name']}`, {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(project),
+        });
+
+        const projects = await response.json();
+        localStorage.setItem('projects', JSON.stringify(projects));
+    } catch {
+        updateProjectsLocal(project);
+    }
+}
+
+function updateProjectsLocal(project) {
+    let projects = [];
     const projectsText = localStorage.getItem('projects');
     if (projectsText) {
-        projects = JSON.parse(projectsText);
+        projects.JSON.parse(projectsText);
     }
-    projects[projName] = project;
+
+    projects.push(project);
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 

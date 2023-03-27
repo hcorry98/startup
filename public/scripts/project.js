@@ -187,7 +187,7 @@ function calcPercentages() {
 }
 
 function parseIconPath(icon) {
-    return 'images/icons/' + icon + '.svg#' + icon;
+    return 'assets/images/icons/' + icon + '.svg#' + icon;
 }
 
 function manage() {

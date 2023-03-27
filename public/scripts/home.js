@@ -104,7 +104,7 @@ function calcPercentages(tasks) {
 }
 
 function ParseIconPath(icon) {
-    return 'images/icons/' + icon + '.svg#' + icon;
+    return 'assets/images/icons/' + icon + '.svg#' + icon;
 }
 
 LoadProjects();
