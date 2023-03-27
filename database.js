@@ -35,7 +35,6 @@ function updateProject(curUser, projName, project) {
 
 function deleteProjects(curUser) {
     const query = {'user': curUser};
-    console.log(curUser);
     projectCollection.deleteMany(query);
 }
 
@@ -44,4 +43,39 @@ function deleteProject(curUser, projName) {
     projectCollection.deleteOne(query);
 }
 
-module.exports = {getProjects, getProject, addProject, updateProject, deleteProjects, deleteProject}
+
+
+const memberCollection = client.db('startup').collection('member');
+
+function getPastMembers(curUser) {
+    const query = {'user': curUser};
+    const cursor = memberCollection.findOne(query, {_id: 0});
+    return cursor;
+}
+
+function setPastMembers(curUser, members) {
+    const query = {'user': curUser}
+    memberCollection.replaceOne(query, members, {upsert: true});
+}
+
+function addPastMember(curUser, newMember) {
+    const query = {'user': curUser};
+    memberCollection.updateOne(query, {$push: {'members': newMember}}, {upsert: true});
+}
+
+function deletePastMembers(curUser) {
+    const query = {'user': curUser}
+    memberCollection.deleteOne(curUser);
+}
+
+function removePastMember(curUser, exMember) {
+    const query = {'user': curUser};
+    memberCollection.updateOne(query, {'members': exMember});
+}
+
+
+
+module.exports = {
+    getProjects, getProject, addProject, updateProject, deleteProjects, deleteProject,
+    getPastMembers, setPastMembers, addPastMember, deletePastMembers, removePastMember
+}

@@ -78,13 +78,11 @@ function updateProjectsLocal(newProject) {
 
 async function deleteProjects() {
     curUser = localStorage.getItem('userName') ?? 'public';
-    console.log(curUser);
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {
         return false;
     }
     try {
-        console.log(`/api/projects/${curUser}`);
         await fetch(`/api/projects/${curUser}`, {
             method: 'DELETE'
         });
@@ -95,7 +93,8 @@ async function deleteProjects() {
 
 
 
-function createPastMembers() {
+async function createPastMembers() {
+    curUser = localStorage.getItem('userName') ?? 'public';
     const pastMembers = [
         'Jake',
         'Thomas',
@@ -107,17 +106,36 @@ function createPastMembers() {
         'Jonathan',
         'Sterling'
     ]
-    console.log(pastMembers);
-    localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+
+    const pastMemberList = {'user': curUser, 'members': pastMembers}
+
+    try {
+        await fetch(`/api/members/${curUser}`, {
+            method: 'PUT',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(pastMemberList)
+        });
+    } finally {
+        localStorage.setItem('pastMembers', JSON.stringify(pastMemberList));
+    }
 }
 
-function deletePastMembers() {
+async function deletePastMembers() {
     let wantToDelete = confirm("Are you sure you want to delete all past team members?");
     if (!wantToDelete) {
         return false;
     }
-    localStorage.removeItem('pastMembers');
+    curUser = localStorage.getItem('userName') ?? 'public';
+    try {
+        await fetch(`api/members/${curUser}`, {
+            method: 'DELETE'
+        });
+    } finally {
+        localStorage.removeItem('pastMembers');
+    }
 }
+
+
 
 function toastProjects() {
     let toastEl = document.getElementById("settingsToast");
