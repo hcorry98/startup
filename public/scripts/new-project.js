@@ -18,8 +18,8 @@ function SetIcon() {
     document.querySelector('#icon-select svg use').setAttribute('href', ParseSvgPath());
 }
 
-function InitialLoadPastMembers() {
-    let pastMembers = LoadPastMembers();
+async function InitialLoadPastMembers() {
+    let pastMembers = await loadPastMembers();
     let selectBox = document.querySelector(".member-form select");
     for (option of selectBox.options) {
         if (option.value != 'default') {
@@ -33,19 +33,47 @@ function InitialLoadPastMembers() {
     }
 }
 
-function LoadPastMembers() {
+async function loadPastMembers() {
     let pastMembers = [];
-    const pastMembersText = localStorage.getItem('pastMembers');
-    if (pastMembersText) {
-        pastMembers = JSON.parse(pastMembersText);
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    try {
+        const response = await fetch(`/api/members/${curUser}`);
+        const memberList = response.json();
+        const pastMembers = memberList['members'];
+        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+    } catch {
+        const pastMembersText = localStorage.getItem('pastMembers');
+        if (pastMembersText) {
+            pastMembers = JSON.parse(pastMembersText);
+        }
     }
+
     return pastMembers;
 }
 
-function AddPastMember(memberName) {
-    let pastMembers = LoadPastMembers();
-    pastMembers.push(memberName);
-    localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+async function addPastMember(memberName) {
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    try {
+        const response = await fetch(`/api/members/${curUser}/${memberName}`, {
+            method: 'POST',
+            headers: {'content-type': 'json/application'}
+        });
+        const memberList = response.json();
+        const pastMembers = memberList['members'];
+        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+    } catch {
+        let pastMembers = [];
+        const pastMembersText = localStorage.getItem('pastMembers');
+        if (pastMembersText) {
+            pastMembers = JSON.parse(pastMembersText);
+        }
+        pastMembers.push(memberName);
+        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+    }
+
+    InitialLoadPastMembers();
 }
 
 function RemoveMember(member) {
@@ -85,13 +113,13 @@ function AddMember(name) {
     inviteModal.hide();
 }
 
-function InviteMember() {
+async function InviteMember() {
     const email = document.querySelector("#inviteEmail").value;
     if (email === '' || !IsValidEmail(email)) {
         alert('Please enter a valid email address.');
         return false;
     }
-    // AddPastMember(email + " (Pending...)");
+    // await addPastMember(email + " (Pending...)");
     AddMember(email + " (Pending...)");
 }
 

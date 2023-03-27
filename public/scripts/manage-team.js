@@ -116,20 +116,38 @@ function addMember(name) {
     inviteModal.hide();
 }
 
-function inviteMember() {
+async function inviteMember() {
     const email = document.querySelector("#inviteEmail").value;
     if (email === '' || !isValidEmail(email)) {
         alert('Please enter a valid email address.');
         return false;
     }
-    addPastMember(email + " (Pending...)");
+    // await addPastMember(email + " (Pending...)");
     addMember(email + " (Pending...)");
 }
 
-function addPastMember(memberName) {
-    let pastMembers = LoadPastMembers();
-    pastMembers.push(memberName);
-    localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+async function addPastMember(memberName) {
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    try {
+        const response = await fetch(`/api/members/${curUser}/${memberName}`, {
+            method: 'POST',
+            headers: {'content-type': 'json/application'}
+        });
+        const memberList = response.json();
+        const pastMembers = memberList['members'];
+        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+    } catch {
+        let pastMembers = [];
+        const pastMembersText = localStorage.getItem('pastMembers');
+        if (pastMembersText) {
+            pastMembers = JSON.parse(pastMembersText);
+        }
+        pastMembers.push(memberName);
+        localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
+    }
+
+    initialLoadPastMembers();
 }
 
 function isValidEmail(mail) 
@@ -141,8 +159,8 @@ function isValidEmail(mail)
     return (false);
 }
 
-function initialLoadPastMembers() {
-    let pastMembers = loadPastMembers();
+async function initialLoadPastMembers() {
+    let pastMembers = await loadPastMembers();
     const teamMembers = project['team-members'];
     let selectBox = document.querySelector(".member-form select");
     for (option of selectBox.options) {
@@ -159,12 +177,22 @@ function initialLoadPastMembers() {
     }
 }
 
-function loadPastMembers() {
+async function loadPastMembers() {
     let pastMembers = [];
-    const pastMembersText = localStorage.getItem('pastMembers');
-    if (pastMembersText) {
-        pastMembers = JSON.parse(pastMembersText);
+    const curUser = localStorage.getItem('userName') ?? 'public';
+
+    try {
+        const response = await fetch(`/api/members/${curUser}`);
+        memberList = response.json();
+        pastMembers = memberList['members'];
+        localStorage.setItem('pastMembers', pastMembers);
+    } catch {
+        const pastMembersText = localStorage.getItem('pastMembers');
+        if (pastMembersText) {
+            pastMembers = JSON.parse(pastMembersText);
+        }
     }
+
     return pastMembers;
 }
 
