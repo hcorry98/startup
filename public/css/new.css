@@ -441,6 +441,14 @@ footer a:hover {
     margin-right: 1em;
 }
 
+.toast-container {
+    margin-bottom: 70px;
+}
+
+.toast {
+    background-color: var(--del-green) !important;
+}
+
 @media (max-height: 570px) {
     footer {
         display: none;
