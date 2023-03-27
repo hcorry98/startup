@@ -65,7 +65,7 @@ function addPastMember(curUser, newMember) {
 
 function deletePastMembers(curUser) {
     const query = {'user': curUser}
-    memberCollection.deleteOne(curUser);
+    memberCollection.deleteOne(query);
 }
 
 function removePastMember(curUser, exMember) {
