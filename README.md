@@ -58,6 +58,10 @@ Using Node.js with Express made it incredibly easy to implement local services a
 
 It's best to set environment variables to connect to the database so that your username, password, and hostname aren't exposed to the public. You can use Atlas to view the collections of documents in the database to make sure data is persisting correctly. If you run into errors, you can ssh into the EC2 instance, check the hosted process using `pm2 ls`, restart the service if necessary (e.g. `pm2 restart simon`), and monitor the process during execution using `pm2 monit`. This will help the debugging process to identify what is going on.
 
+### Login
+
+When storing user data, we need to hash it using bcrypt before sending the password to the database. When a user tries to log on, we can use their provided password with the hashed password from the database and compare them. For an authentication token, we can generate one using uuid. When the user is logged in, we will store the token in a cookie, and we will delete that cookie when they log out. We will wrap the rest of our API calls using another api router that will verify the authentication token for each call.
+
 ## Delligator
 
 **Deployment Command:**
