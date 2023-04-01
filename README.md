@@ -73,7 +73,7 @@ When we open a WebSocket, we can specify the protocol based on what protocol the
 ./deployFiles.sh -k ~/Documents/College/2023\ -\ a\)\ Winter/CS\ 260/AWS_KeyPair_production.pem -h delligator.link -s startup
 ```
 
-**What I've Learned:**
+## What I've Learned:
 
 ***HTML & CSS***
 
@@ -85,7 +85,7 @@ I've learned how to utilize `div`s along with `display`s to achieve the lookout 
 
 I've learned how to alter the DOM with javascript to dynamically place and remove elements as the user interacts with my application. I've also learned how to build element templates, clone them, and then append them to a parent element. I've practiced navigating the DOM tree, altering styles and attributes of elements, as well as doing error checking and logic to ensure the user's experience is as intended. I've also practiced using the cache to load and set variables to provide temporary persistent data.
 
-**Elevator Pitch:**
+## Elevator Pitch:
 
 I’ve come up with this app that allows teams to divide tasks to more easily manage a project. It’s called “Delligator”. We can set up a project on there and then assign tasks, or parts of the project, to each member in the group. That way we know exactly what portions of the group project we’re each in charge of, and we can see in real-time where everyone is at with their responsibilities. It’ll help increase productivity and avoid confusion as to who is in charge of what. It will also help improve and ease communication about the progress of our project.
 
