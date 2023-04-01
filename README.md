@@ -62,6 +62,10 @@ It's best to set environment variables to connect to the database so that your u
 
 When storing user data, we need to hash it using bcrypt before sending the password to the database. When a user tries to log on, we can use their provided password with the hashed password from the database and compare them. For an authentication token, we can generate one using uuid. When the user is logged in, we will store the token in a cookie, and we will delete that cookie when they log out. We will wrap the rest of our API calls using another api router that will verify the authentication token for each call.
 
+### WebSocket
+
+When we open a WebSocket, we can specify the protocol based on what protocol the client is currently using. Then, the server upgrades the connection to a WebSocket connection, allowing the server to send messages to the client instead of just responses. We can keep track of the connection IDs to send messages to all players except the client who sent the message. We will also ping each client every 10 seconds to avoid the WebSocket from automatically closing.
+
 ## Delligator
 
 **Deployment Command:**
