@@ -7,7 +7,7 @@ async function getProject() {
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
@@ -128,7 +128,7 @@ function saveTasks() {
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
     try {
         const response = await fetch(`/api/project/${curUser}/${project['project-name']}`, {
             method: 'POST',

@@ -8,7 +8,7 @@ async function login() {
     const passwordEl = document.querySelector("#password");
     let password = passwordEl.value;
 
-    localStorage.setItem("userName", username);
+    localStorage.setItem("username", username);
     localStorage.setItem("justLoggedIn", "true");
 
     const response = await fetch(`/api/auth/login`, {
@@ -44,7 +44,7 @@ async function register() {
         return;
     }
 
-    localStorage.setItem("userName", username);
+    localStorage.setItem("username", username);
     localStorage.setItem("justLoggedIn", "true");
 
     newUser = {};

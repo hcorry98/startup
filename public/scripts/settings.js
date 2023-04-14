@@ -6,7 +6,7 @@ function logout() {
         headers: {'content-type': 'json/application'},
     });
 
-    localStorage.removeItem("userName");
+    localStorage.removeItem("username");
 }
 
 function createProjects() {
@@ -16,9 +16,9 @@ function createProjects() {
     let teamMembers = [];
     let tasks = {};
 
-    curUser = localStorage.getItem('userName') ?? 'public';
+    curUser = localStorage.getItem('username') ?? 'public';
 
-    name = "Technical Instructions";
+    name = "Technical Instructions Paper";
     icon = "pencil";
     teamMembers = ["Me", "Sarah", "Madison", "Luke"];
     tasks['Take pictures'] = {'assigned-to': 'Sarah', 'completed': false};
@@ -31,15 +31,15 @@ function createProjects() {
     project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
 
-    name = "DnD";
-    icon = "notebook";
-    teamMembers = ["Me", "Jake", "Thomas", "Brock"];
+    name = "Data Finder";
+    icon = "briefcase";
+    teamMembers = ["Me", "Jonah", "Cassidy", "Jaden"];
     tasks = {};
-    tasks['Print minis'] = {'assigned-to': 'Me', 'completed': false};
-    tasks['Write campaign'] = {'assigned-to': 'Brock', 'completed': true};
-    tasks['Buy fancy dice'] = {'assigned-to': 'Jake', 'completed': true};
-    tasks['Obtain Manzanita'] = {'assigned-to': 'Jake', 'completed': true};
-    tasks['Drive'] = {'assigned-to': 'Thomas', 'completed': true};
+    tasks['Draw UML'] = {'assigned-to': 'Me', 'completed': false};
+    tasks['Add threading to functions'] = {'assigned-to': 'Cassidy', 'completed': true};
+    tasks['Write documentation'] = {'assigned-to': 'Jonah', 'completed': true};
+    tasks['Design API'] = {'assigned-to': 'Jonah', 'completed': true};
+    tasks['Fix script'] = {'assigned-to': 'Jaden', 'completed': true};
 
     project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
@@ -86,7 +86,7 @@ function updateProjectsLocal(newProject) {
 }
 
 async function deleteProjects() {
-    curUser = localStorage.getItem('userName') ?? 'public';
+    curUser = localStorage.getItem('username') ?? 'public';
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {
         return false;
@@ -103,7 +103,7 @@ async function deleteProjects() {
 
 
 async function createPastMembers() {
-    curUser = localStorage.getItem('userName') ?? 'public';
+    curUser = localStorage.getItem('username') ?? 'public';
     const pastMembers = [
         'Jake',
         'Thomas',
@@ -113,7 +113,10 @@ async function createPastMembers() {
         'Madison',
         'Hailey',
         'Jonathan',
-        'Sterling'
+        'Sterling',
+        'Jonah',
+        'Cassidy',
+        'Jaden'
     ]
 
     const pastMemberList = {'user': curUser, 'members': pastMembers}
@@ -134,7 +137,7 @@ async function deletePastMembers() {
     if (!wantToDelete) {
         return false;
     }
-    curUser = localStorage.getItem('userName') ?? 'public';
+    curUser = localStorage.getItem('username') ?? 'public';
     try {
         await fetch(`api/members/${curUser}`, {
             method: 'DELETE'

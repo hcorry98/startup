@@ -20,7 +20,7 @@ async function toastWelcome() {
 
 async function LoadProjects() {
     let projects = [];
-    curUser = localStorage.getItem('userName') ?? 'Mystery User';
+    curUser = localStorage.getItem('username') ?? 'Mystery User';
 
     try {
         const response = await fetch(`/api/projects/${curUser}`);

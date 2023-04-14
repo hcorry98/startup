@@ -35,7 +35,7 @@ async function InitialLoadPastMembers() {
 
 async function loadPastMembers() {
     let pastMembers = [];
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/members/${curUser}`);
@@ -53,7 +53,7 @@ async function loadPastMembers() {
 }
 
 async function addPastMember(memberName) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/members/${curUser}/${memberName}`, {
@@ -153,7 +153,7 @@ async function IsValidProjectName() {
 }
 
 async function projExists(projName) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
         project = await response.json();
@@ -209,7 +209,7 @@ function ClearNewMemberFields() {
 function CreateProject() {
     const newProjectName = document.querySelector('#projectName').value;
 
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     const newProject = {'user': curUser, 'project-name': newProjectName, 'icon': icon,'team-members': GetProjectMembers(), 'tasks': []};
     console.log(projects);
@@ -217,7 +217,7 @@ function CreateProject() {
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
     try {
         const response = await fetch(`/api/project/${curUser}`, {
             method: 'PUT',

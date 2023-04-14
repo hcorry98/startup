@@ -6,7 +6,7 @@ async function getProject() {
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
@@ -126,7 +126,7 @@ async function inviteMember() {
 }
 
 async function addPastMember(memberName) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/members/${curUser}/${memberName}`, {
@@ -173,7 +173,7 @@ async function initialLoadPastMembers() {
 
 async function loadPastMembers() {
     let pastMembers = [];
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/members/${curUser}`);
@@ -195,7 +195,7 @@ function saveTeam() {
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
     try {
         const response = await fetch(`/api/project/${curUser}/${project['project-name']}`, {
             method: 'POST',

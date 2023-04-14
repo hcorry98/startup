@@ -7,7 +7,7 @@ async function getProject() {
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
 
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`);
@@ -88,7 +88,7 @@ async function changeTaskState(toggleEl) {
     project['tasks'] = projTasks;
 
     let projects = [];
-    const curUser = localStorage.getItem('userName') ?? 'public';
+    const curUser = localStorage.getItem('username') ?? 'public';
     try {
         const response = await fetch(`/api/project/${curUser}/${projName}`, {
             method: 'POST',
