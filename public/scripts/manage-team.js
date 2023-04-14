@@ -117,13 +117,12 @@ function addMember(name) {
 }
 
 async function inviteMember() {
-    const email = document.querySelector("#inviteEmail").value;
-    if (email === '' || !isValidEmail(email)) {
+    const username = document.querySelector("#inviteUsername").value;
+    if (username === '') {
         alert('Please enter a valid email address.');
         return false;
     }
-    // await addPastMember(email + " (Pending...)");
-    addMember(email + " (Pending...)");
+    await addPastMember(username);
 }
 
 async function addPastMember(memberName) {
@@ -134,6 +133,10 @@ async function addPastMember(memberName) {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
+        if (response.status == 404) {
+            alert("Member not found. Please invite your team member to create an account.");
+            return;
+        }
         const memberList = response.json();
         const pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
@@ -148,15 +151,6 @@ async function addPastMember(memberName) {
     }
 
     initialLoadPastMembers();
-}
-
-function isValidEmail(mail) 
-{
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-  {
-    return (true);
-  }
-    return (false);
 }
 
 async function initialLoadPastMembers() {

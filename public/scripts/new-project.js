@@ -60,6 +60,10 @@ async function addPastMember(memberName) {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
+        if (response.status == 404) {
+            alert("Member not found. Please invite your team member to create an account.");
+            return;
+        }
         const memberList = await response.json();
         const pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
@@ -114,22 +118,12 @@ function AddMember(name) {
 }
 
 async function InviteMember() {
-    const email = document.querySelector("#inviteEmail").value;
-    if (email === '' || !IsValidEmail(email)) {
+    const username = document.querySelector("#inviteUsername").value;
+    if (username === '') {
         alert('Please enter a valid email address.');
         return false;
     }
-    // await addPastMember(email + " (Pending...)");
-    AddMember(email + " (Pending...)");
-}
-
-function IsValidEmail(mail) 
-{
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-  {
-    return (true);
-  }
-    return (false);
+    await addPastMember(username);
 }
 
 function validateProjectName() {
@@ -208,7 +202,7 @@ function nameDoesNotExist() {
 }
 
 function ClearNewMemberFields() {
-    document.querySelector("#inviteEmail").value = '';
+    document.querySelector("#inviteUsername").value = '';
     document.querySelector(".member-form select").value = 'default';
 }
 

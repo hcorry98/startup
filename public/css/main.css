@@ -44,6 +44,7 @@ header a {
 header a h1 {
     font-family: AlbulaProBold;
     font-size: 2em;
+    letter-spacing: 0.3em;
 }
 
 header hr {

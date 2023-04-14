@@ -24,7 +24,7 @@ apiRouter.post('/auth/register', async(req, res) => {
     } else if (await DB.getUserFromUsername(req.body.username)) {
         res.status(409).send({msg: 'That username is already taken.'});
     } else {
-        const user = await DB.createUser(req.body.username, req.body.email, req.body.password);
+        const user = await DB.createUser(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName);
 
         setAuthCookie(res, user.token);
 
@@ -40,9 +40,12 @@ apiRouter.post('/auth/login', async (req, res) => {
             setAuthCookie(res, user.token);
             res.send({id: user._id});
             return;
+        } else {
+            res.status(401).send({msg: 'Incorrect password.'});
         }
+    } else {
+        res.status(401).send({msg: 'User does not exist.'});
     }
-    res.status(401).send({msg: 'Unauthorized'});
 });
 
 // logout the current user
@@ -53,10 +56,10 @@ apiRouter.delete('/auth/logout', (_req, res) => {
 
 // Get information about the current user
 apiRouter.get('/user/:username', async (req, res) => {
-    const user = await DB.getUser(req.params.username);
+    const user = await DB.getUserFromUsername(req.params.username);
     if (user) {
         const token = req?.cookies.token;
-        res.send({email: user.email, authenticated: token === user.token});
+        res.send({email: user.email, firstName: user.firstName, lastName: user.lastName, authenticated: token === user.token});
         return;
     }
     res.status(404).send({msg: 'Unknown'});
@@ -147,9 +150,16 @@ secureApiRouter.put('/members/:user', async (req, _res) => {
 secureApiRouter.post('/members/:user/:member', async (req, res) => {
     const user = req.params.user;
     const member = req.params.member;
-    DB.addPastMember(user, member);
-    const members = await DB.getPastMembers(user);
-    res.send(members);
+    memberUser = DB.getUserFromUsername(member.username)
+    console.log(memberUser)
+    if (memberUser) {
+        DB.addPastMember(user, member);
+        const members = await DB.getPastMembers(user);
+        res.send(members);
+    }
+    else {
+        res.status(404).send({msg: 'Member not found'});
+    }
 });
 
 // deleteMembers

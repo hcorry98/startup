@@ -1,5 +1,14 @@
 let curUser = '';
 
+function logout() {
+    fetch(`/api/auth/logout`, {
+        method: 'DELETE',
+        headers: {'content-type': 'json/application'},
+    });
+
+    localStorage.removeItem("userName");
+}
+
 function createProjects() {
     let project;
     let name = '';

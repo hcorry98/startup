@@ -1,13 +1,20 @@
 let curUser = '';
 
-function toastWelcome() {
+async function getName() {
+    let user = await fetch(`/api/user/${curUser}`);
+    user = await user.json();
+    const fullName = user.firstName + " " + user.lastName;
+    return fullName;
+}
+
+async function toastWelcome() {
     let toastEl = document.getElementById("welcomeToast");
 
     let myToast = bootstrap.Toast.getOrCreateInstance(toastEl, {
         delay: 3000
     });
-
-    toastEl.querySelector(".toast-body").textContent = "Welcome " + curUser + "!";
+    const fullName = await getName();
+    toastEl.querySelector(".toast-body").textContent = "Welcome " + fullName + "!";
     myToast.show();
 }
 
