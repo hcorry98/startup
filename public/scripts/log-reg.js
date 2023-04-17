@@ -8,10 +8,14 @@ async function login() {
     const passwordEl = document.querySelector("#password");
     let password = passwordEl.value;
 
-    localStorage.setItem("username", username);
+    let response = await fetch(`/api/user/${username}`);
+    user = await response.json();
+    user = {'username': username, 'firstName': user.firstName, 'lastName': user.lastName};
+
+    localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("justLoggedIn", "true");
 
-    const response = await fetch(`/api/auth/login`, {
+    response = await fetch(`/api/auth/login`, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({'username': username, 'password': password})
@@ -44,7 +48,8 @@ async function register() {
         return;
     }
 
-    localStorage.setItem("username", username);
+    user = {'username': username, 'firstName': firstName, 'lastName': lastName};
+    localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("justLoggedIn", "true");
 
     newUser = {};

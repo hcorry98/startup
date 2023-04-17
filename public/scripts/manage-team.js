@@ -1,15 +1,17 @@
 let project;
 let projName;
+let curUser;
 
 async function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
     try {
-        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        const response = await fetch(`/api/project/${curUser.username}/${projName}`);
         project = await response.json();
     } catch {
         let projects;
@@ -52,14 +54,18 @@ function loadMembers() {
     const template = document.querySelector('#memberTmpl');
     for (const member of teamMembers) {
         let memberEl = template.content.cloneNode(true);
-        memberEl.querySelector('label').textContent = member;
+        if (member.username === curUser.username) {
+            continue;
+        } else {
+            memberEl.querySelector('label').textContent = member.firstName;
+        }
         membersDiv.insertBefore(memberEl, buttonDiv);
     }
 }
 
 function removeMember(svgEl) {
     const div = svgEl.parentElement;
-    const memberToRemove = div.querySelector('label').textContent;
+    let memberToRemove = div.querySelector('label').textContent;
     div.remove();
 
     let selectBox = document.querySelector(".member-form select");
@@ -68,10 +74,16 @@ function removeMember(svgEl) {
     selectBox.appendChild(newOption);
 
     const members = project['team-members'];
-    const index = members.indexOf(memberToRemove);
-    if (index > -1) {
-        members.splice(index, 1);
+    console.log(memberToRemove);
+
+    for (let i = 0; i < members.length; i++) {
+        if (members[i].firstName === memberToRemove) {
+            members.splice(i, 1);
+        }
     }
+
+    console.log(members);
+
     project['team-members'] = members;
 
     document.querySelector('.subtitle a').setAttribute('href', 'manage-tasks.html?project=' + projName);
@@ -84,17 +96,25 @@ function removeMember(svgEl) {
     }
 }
 
-function addMember(name) {
+async function addMember() {
     let selectBox = document.querySelector(".member-form select");
     const defaultChoice = 'Choose team member...';
-    if (name == undefined && selectBox.options[selectBox.selectedIndex].value === 'default') {
+    if (selectBox.options[selectBox.selectedIndex].value === 'default') {
         return false;
     }
-    if (name === undefined) {
-        let selectedValue = selectBox.options[selectBox.selectedIndex].textContent;
-        name = selectedValue;
-        selectBox.options[selectBox.selectedIndex].remove();
-        selectBox.selectedIndex = 0;
+
+    let selectedValue = selectBox.options[selectBox.selectedIndex].textContent;
+    memberFullName = selectedValue;
+    selectBox.options[selectBox.selectedIndex].remove();
+    selectBox.selectedIndex = 0;
+
+    let pastMembers = await loadPastMembers();
+    let member = {}
+    for (pastMem of pastMembers) {
+        if (pastMem.firstName + " " + pastMem.lastName === memberFullName) {
+            member = pastMem;
+            break;
+        }
     }
 
     let membersEl = document.querySelector('.members');
@@ -102,12 +122,12 @@ function addMember(name) {
 
     const template = document.querySelector('#memberTmpl');
     let newMember = template.content.cloneNode(true);
-    newMember.querySelector('label').textContent = name;
+    newMember.querySelector('label').textContent = member.firstName;
 
     membersEl.insertBefore(newMember, buttonDiv);
 
     const members = project['team-members'];
-    members.push(name);
+    members.push(member);
     project['team-members'] = members;
     document.querySelector('.subtitle a').setAttribute('href', 'manage-tasks.html?project=' + projName);
 
@@ -119,17 +139,19 @@ function addMember(name) {
 async function inviteMember() {
     const username = document.querySelector("#inviteUsername").value;
     if (username === '') {
-        alert('Please enter a valid email address.');
+        alert('You must enter a username to invite someone to your team.');
         return false;
     }
     await addPastMember(username);
 }
 
-async function addPastMember(memberName) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+async function addPastMember(memberUsername) {
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+    pastMember = await fetch(`/api/user/${memberUsername}`);
 
     try {
-        const response = await fetch(`/api/members/${curUser}/${memberName}`, {
+        const response = await fetch(`/api/members/${curUser.username}/${memberUsername}`, {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
@@ -137,7 +159,7 @@ async function addPastMember(memberName) {
             alert("Member not found. Please invite your team member to create an account.");
             return;
         }
-        const memberList = response.json();
+        const memberList = await response.json();
         const pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
     } catch {
@@ -146,7 +168,7 @@ async function addPastMember(memberName) {
         if (pastMembersText) {
             pastMembers = JSON.parse(pastMembersText);
         }
-        pastMembers.push(memberName);
+        pastMembers.push(pastMember);
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
     }
 
@@ -165,7 +187,7 @@ async function initialLoadPastMembers() {
     for (member of pastMembers) {
         if (!teamMembers.includes(member)) {
             newOption = document.createElement("option");
-            newOption.textContent = member;
+            newOption.textContent = member.firstName + " " + member.lastName;
             selectBox.appendChild(newOption);
         }
     }
@@ -173,10 +195,11 @@ async function initialLoadPastMembers() {
 
 async function loadPastMembers() {
     let pastMembers = [];
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
     try {
-        const response = await fetch(`/api/members/${curUser}`);
+        const response = await fetch(`/api/members/${curUser.username}`);
         memberList = await response.json();
         pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', pastMembers);
@@ -195,9 +218,11 @@ function saveTeam() {
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+
     try {
-        const response = await fetch(`/api/project/${curUser}/${project['project-name']}`, {
+        const response = await fetch(`/api/project/${curUser.username}/${project['project-name']}`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),

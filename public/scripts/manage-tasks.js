@@ -1,16 +1,18 @@
 let project;
 let projName;
 let numTasks = 0;
+let curUser;
 
 async function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
     try {
-        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        const response = await fetch(`/api/project/${curUser.username}/${projName}`);
         project = await response.json();
     } catch {
         let projects;
@@ -56,15 +58,32 @@ function loadTasks() {
         const selectEl = nextTask.querySelector('select');
         for (member of teamMembers) {
             const optionEl = document.createElement('option');
-            optionEl.textContent = member;
-            optionEl.value = member;
+            if (member.username === curUser.username) {
+                optionEl.textContent = 'Me';
+                optionEl.value = 'Me';
+            } else {
+                optionEl.textContent = member.firstName;
+                optionEl.value = member.firstName;
+            }
             selectEl.appendChild(optionEl);
         }
         const optionEl = document.createElement('option');
         optionEl.textContent = 'Unassigned';
         optionEl.value = 'Unassigned';
         selectEl.appendChild(optionEl);
-        selectEl.value = task['assigned-to'];
+        const assigned = task['assigned-to']
+        
+        if (teamMembers.some(e => e.username === assigned.username)) {
+            console.log(teamMembers)
+            console.log(assigned)
+            if (assigned.username === curUser.username) {
+                selectEl.value = 'Me';
+            } else {
+                selectEl.value = task['assigned-to'].firstName;
+            }
+        } else {
+            selectEl.value = 'Unassigned'
+        }
 
         const taskInput = nextTask.querySelector('input');
         taskInput.value = taskName;
@@ -91,8 +110,13 @@ function addTask() {
     const selectEl = newTask.querySelector('select');
     for (member of teamMembers) {
         const optionEl = document.createElement('option');
-        optionEl.textContent = member;
-        optionEl.value = member;
+        if (member.username === curUser.username) {
+            optionEl.textContent = 'Me';
+            optionEl.value = 'Me';
+        } else {
+            optionEl.textContent = member.firstName;
+            optionEl.value = member.firstName;
+        }
         selectEl.appendChild(optionEl);
     }
     const optionEl = document.createElement('option');
@@ -128,9 +152,11 @@ function saveTasks() {
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+
     try {
-        const response = await fetch(`/api/project/${curUser}/${project['project-name']}`, {
+        const response = await fetch(`/api/project/${curUser.username}/${project['project-name']}`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -167,7 +193,17 @@ function getNewTasks() {
         const memberSelectEl = taskEl.querySelector('select');
         let assignedTo = 'Unassigned';
         if (memberSelectEl.selectedIndex != 0) {
-            assignedTo = memberSelectEl.options[memberSelectEl.selectedIndex].textContent;
+            assignedToName = memberSelectEl.options[memberSelectEl.selectedIndex].textContent;
+            if (assignedToName === 'Me') {
+                assignedToName = curUser.firstName
+            }
+            teamMembers = project['team-members'];
+            for (mem of teamMembers) {
+                if (mem.firstName === assignedToName) {
+                    assignedTo = mem
+                    break
+                }
+            }
         }
         let completion = false;
         if (newTaskName in projTasks) {

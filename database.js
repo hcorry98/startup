@@ -49,13 +49,13 @@ async function createUser(username, email, password, firstName, lastName) {
 
 
 function getProjects(curUser) {
-    const query = {'user': curUser};
+    const query = {'team-members.username': curUser};
     const cursor = projectCollection.find(query, {_id: 0});
     return cursor.toArray();
 }
 
 function getProject(curUser, projName) {
-    const query = {'user': curUser, 'project-name': projName};
+    const query = {'team-members.username': curUser, 'project-name': projName};
     const cursor = projectCollection.findOne(query, {_id: 0});
     return cursor;
 }
@@ -64,17 +64,17 @@ function addProject(project) {
 }
 
 function updateProject(curUser, projName, project) {
-    const query = {'user': curUser, 'project-name': projName};
+    const query = {'team-members.username': curUser, 'project-name': projName};
     projectCollection.replaceOne(query, project);
 }
 
 function deleteProjects(curUser) {
-    const query = {'user': curUser};
+    const query = {'team-members.username': curUser};
     projectCollection.deleteMany(query);
 }
 
 function deleteProject(curUser, projName) {
-    const query = {'user': curUser, 'project-name': projName};
+    const query = {'team-members.username': curUser, 'project-name': projName};
     projectCollection.deleteOne(query);
 }
 

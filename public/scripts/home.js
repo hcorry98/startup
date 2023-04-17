@@ -1,7 +1,7 @@
-let curUser = '';
+let curUser = {};
 
 async function getName() {
-    let user = await fetch(`/api/user/${curUser}`);
+    let user = await fetch(`/api/user/${curUser.username}`);
     user = await user.json();
     const fullName = user.firstName + " " + user.lastName;
     return fullName;
@@ -20,10 +20,12 @@ async function toastWelcome() {
 
 async function LoadProjects() {
     let projects = [];
-    curUser = localStorage.getItem('username') ?? 'Mystery User';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+    curUsername = curUser.username
 
     try {
-        const response = await fetch(`/api/projects/${curUser}`);
+        const response = await fetch(`/api/projects/${curUsername}`);
         projects = await response.json();
 
         localStorage.setItem('projects', JSON.stringify(projects));
@@ -85,7 +87,7 @@ function calcPercentages(tasks) {
         if (task['completed'] === true) {
             allCompleted++;
         }
-        if (task['assigned-to'] === 'Me') {
+        if (task['assigned-to'].username === curUser.username) {
             myTotal++;
             if (task['completed'] === true) {
                 myCompleted++;

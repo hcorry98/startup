@@ -1,4 +1,4 @@
-let curUser = '';
+let curUser = {};
 
 function logout() {
     fetch(`/api/auth/logout`, {
@@ -16,51 +16,63 @@ function createProjects() {
     let teamMembers = [];
     let tasks = {};
 
-    curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
-    name = "Technical Instructions Paper";
+    name = "Technical Instructions";
     icon = "pencil";
-    teamMembers = ["Me", "Sarah", "Madison", "Luke"];
-    tasks['Take pictures'] = {'assigned-to': 'Sarah', 'completed': false};
-    tasks['Take minutes'] = {'assigned-to': 'Luke', 'completed': true};
-    tasks['Edit minutes'] = {'assigned-to': 'Me', 'completed': true};
-    tasks['Bring supplies'] = {'assigned-to': 'Sarah', 'completed': false};
-    tasks['Assign tasks'] = {'assigned-to': 'Madison', 'completed': false};
-    tasks['Write instructions'] = {'assigned-to': 'Me', 'completed': false};
+    teamMembers = [
+        {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName},
+        {'username': 'sCarson', 'firstName': 'Sarah', 'lastName': 'Carson'},
+        {'username': 'lFreeman', 'firstName': 'Luke', 'lastName': 'Freeman'},
+        {'username': 'mChartrand', 'firstName': 'Madison', 'lastName': 'Chartrand'}
+    ];
+    tasks['Take pictures'] = {'assigned-to': {'username': 'sCarson', 'firstName': 'Sarah', 'lastName': 'Carson'}, 'completed': false};
+    tasks['Take minutes'] = {'assigned-to': {'username': 'lFreeman', 'firstName': 'Luke', 'lastName': 'Freeman'}, 'completed': true};
+    tasks['Edit minutes'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': true};
+    tasks['Bring supplies'] = {'assigned-to': {'username': 'sCarson', 'firstName': 'Sarah', 'lastName': 'Carson'}, 'completed': false};
+    tasks['Assign tasks'] = {'assigned-to': {'username': 'mChartrand', 'firstName': 'Madison', 'lastName': 'Chartrand'}, 'completed': false};
+    tasks['Write instructions'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': false};
 
-    project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    project = {'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
 
     name = "Data Finder";
     icon = "briefcase";
-    teamMembers = ["Me", "Jonah", "Cassidy", "Jaden"];
+    teamMembers = [
+        {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName},
+        {'username': 'jAustin', 'firstName': 'Jonah', 'lastName': 'Austin'},
+        {'username': 'cHardisty', 'firstName': 'Cassidy', 'lastName': 'Hardisty'},
+        {'username': 'jTaylor', 'firstName': 'Jaden', 'lastName': 'Taylor'}
+    ];
     tasks = {};
-    tasks['Draw UML'] = {'assigned-to': 'Me', 'completed': false};
-    tasks['Add threading to functions'] = {'assigned-to': 'Cassidy', 'completed': true};
-    tasks['Write documentation'] = {'assigned-to': 'Jonah', 'completed': true};
-    tasks['Design API'] = {'assigned-to': 'Jonah', 'completed': true};
-    tasks['Fix script'] = {'assigned-to': 'Jaden', 'completed': true};
+    tasks['Draw UML'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': false};
+    tasks['Add threading to functions'] = {'assigned-to': {'username': 'cHardisty', 'firstName': 'Cassidy', 'lastName': 'Hardisty'}, 'completed': true};
+    tasks['Write documentation'] = {'assigned-to': {'username': 'jAustin', 'firstName': 'Jonah', 'lastName': 'Austin'}, 'completed': true};
+    tasks['Design API'] = {'assigned-to': {'username': 'jAustin', 'firstName': 'Jonah', 'lastName': 'Austin'}, 'completed': true};
+    tasks['Fix script'] = {'assigned-to': {'username': 'jTaylor', 'firstName': 'Jaden', 'lastName': 'Taylor'}, 'completed': true};
 
-    project = {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    project = {'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
 
     name = "Delligator";
     icon = "device-laptop";
-    teamMembers = ["Me"];
+    teamMembers = [{'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}];
     tasks = {};
-    tasks['Implement JavaScript'] = {'assigned-to': 'Me', 'completed': false};
-    tasks['Buy domain name'] = {'assigned-to': 'Me', 'completed': true};
-    tasks['Setup web server'] = {'assigned-to': 'Me', 'completed': true};
-    tasks['Implement HTML'] = {'assigned-to': 'Me', 'completed': true};
-    tasks['Implement CSS'] = {'assigned-to': 'Me', 'completed': true};
+    tasks['Implement JavaScript'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': false};
+    tasks['Buy domain name'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': true};
+    tasks['Setup web server'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': true};
+    tasks['Implement HTML'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': true};
+    tasks['Implement CSS'] = {'assigned-to': {'username': curUser.username, 'firstName': curUser.firstName, 'lastName': curUser.lastName}, 'completed': true};
 
-    project =  {'user': curUser, 'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
+    project =  {'project-name': name, 'icon': icon, 'team-members': teamMembers, 'tasks': tasks};
     saveProject(project);
 }
 
 async function saveProject(project) {
+    curUsername = curUser.username
     try {
-        const response = await fetch(`/api/project/${curUser}`, {
+        const response = await fetch(`/api/project/${curUsername}`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -86,13 +98,15 @@ function updateProjectsLocal(newProject) {
 }
 
 async function deleteProjects() {
-    curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+    curUsername = curUser.username
     let wantToDelete = confirm("Are you sure you want to delete all existing projects?");
     if (!wantToDelete) {
         return false;
     }
     try {
-        await fetch(`/api/projects/${curUser}`, {
+        await fetch(`/api/projects/${curUsername}`, {
             method: 'DELETE'
         });
     } finally {
@@ -103,26 +117,28 @@ async function deleteProjects() {
 
 
 async function createPastMembers() {
-    curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
     const pastMembers = [
-        'Jake',
-        'Thomas',
-        'Brock',
-        'Sarah',
-        'Luke',
-        'Madison',
-        'Hailey',
-        'Jonathan',
-        'Sterling',
-        'Jonah',
-        'Cassidy',
-        'Jaden'
+        {'username': 'TheTunaFish', 'firstName': 'Jake', 'lastName': 'Toone'},
+        {'username': 'ThommyBoiL', 'firstName': 'Thomas', 'lastName': 'Lundquist'},
+        {'username': 'Coleman22', 'firstName': 'Brock', 'lastName': 'Coleman'},
+        {'username': 'sCarson', 'firstName': 'Sarah', 'lastName': 'Carson'},
+        {'username': 'lFreeman', 'firstName': 'Luke', 'lastName': 'Freeman'},
+        {'username': 'mChartrand', 'firstName': 'Madison', 'lastName': 'Chartrand'},
+        {'username': 'haimears', 'firstName': 'Hailey', 'lastName': 'Mears'},
+        {'username': 'jonny', 'firstName': 'Jonthan', 'lastName': 'Mears'},
+        {'username': 'mcgloobaglobbin', 'firstName': 'Sterling', 'lastName': 'Connell'},
+        {'username': 'jAustin', 'firstName': 'Jonah', 'lastName': 'Austin'},
+        {'username': 'cHardisty', 'firstName': 'Cassidy', 'lastName': 'Hardisty'},
+        {'username': 'jTaylor', 'firstName': 'Jaden', 'lastName': 'Taylor'}
     ]
 
-    const pastMemberList = {'user': curUser, 'members': pastMembers}
+    curUsername = curUser.username
+    const pastMemberList = {'user': curUsername, 'members': pastMembers}
 
     try {
-        await fetch(`/api/members/${curUser}`, {
+        await fetch(`/api/members/${curUsername}`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(pastMemberList)
@@ -137,9 +153,11 @@ async function deletePastMembers() {
     if (!wantToDelete) {
         return false;
     }
-    curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+    curUsername = curUser.username
     try {
-        await fetch(`api/members/${curUser}`, {
+        await fetch(`api/members/${curUsername}`, {
             method: 'DELETE'
         });
     } finally {

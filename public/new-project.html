@@ -190,14 +190,8 @@
                                         <option disabled selected value="default">
                                             Choose team member...
                                         </option>  
-                                        <option>
-                                            Sarah
-                                        </option>
-                                        <option>
-                                            Thomas
-                                        </option>
                                     </select>
-                                    <button type="button" onclick="AddMember()" class="btn btn-primary">Add</button>
+                                    <button type="button" onclick="AddMember()" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
                                 </div>
                             </div>
 
@@ -209,8 +203,8 @@
                                     Please enter the username of the person you'd like to team up with.
                                 </p>
                                 <div class="member-form">
-                                    <input type="username" class="form-control" id="inviteUsername" placeholder="username" /> 
-                                    <button type="button" onclick="InviteMember()" class="btn btn-primary">Invite</button>
+                                    <input type="username" class="form-control" id="inviteUsername" placeholder="Username" /> 
+                                    <button type="button" onclick="InviteMember()" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
                                 </div>
                             </div>
                         </div>

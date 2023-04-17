@@ -1,4 +1,5 @@
 let icon;
+let projectMembers = [];
 
 function ChooseIcon(element) {
     icon = ParseIconPath(element.src);
@@ -28,17 +29,18 @@ async function InitialLoadPastMembers() {
     }
     for (member of pastMembers) {
         newOption = document.createElement("option");
-        newOption.textContent = member;
+        newOption.textContent = member.firstName + " " + member.lastName;
         selectBox.appendChild(newOption);
     }
 }
 
 async function loadPastMembers() {
     let pastMembers = [];
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
     try {
-        const response = await fetch(`/api/members/${curUser}`);
+        const response = await fetch(`/api/members/${curUser.username}`);
         memberList = await response.json();
         pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', pastMembers);
@@ -52,11 +54,13 @@ async function loadPastMembers() {
     return pastMembers;
 }
 
-async function addPastMember(memberName) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+async function addPastMember(memberUsername) {
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+    pastMember = await fetch(`/api/user/${memberUsername}`);
 
     try {
-        const response = await fetch(`/api/members/${curUser}/${memberName}`, {
+        const response = await fetch(`/api/members/${curUser.username}/${memberUsername}`, {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
@@ -73,7 +77,7 @@ async function addPastMember(memberName) {
         if (pastMembersText) {
             pastMembers = JSON.parse(pastMembersText);
         }
-        pastMembers.push(memberName);
+        pastMembers.push(pastMember);
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
     }
 
@@ -90,17 +94,25 @@ function RemoveMember(member) {
     selectBox.appendChild(newOption);
 }
 
-function AddMember(name) {
+async function AddMember() {
     let selectBox = document.querySelector(".member-form select");
     const defaultChoice = 'Choose team member...';
-    if (name == undefined && selectBox.options[selectBox.selectedIndex].value === 'default') {
+    if (selectBox.options[selectBox.selectedIndex].value === 'default') {
         return false;
     }
-    if (name === undefined) {
-        let selectedValue = selectBox.options[selectBox.selectedIndex].textContent;
-        name = selectedValue;
-        selectBox.options[selectBox.selectedIndex].remove();
-        selectBox.selectedIndex = 0;
+
+    let selectedValue = selectBox.options[selectBox.selectedIndex].textContent;
+    memberFullName = selectedValue;
+    selectBox.options[selectBox.selectedIndex].remove();
+    selectBox.selectedIndex = 0;
+
+    let pastMembers = await loadPastMembers();
+    let member = {}
+    for (pastMem of pastMembers) {
+        if (pastMem.firstName + " " + pastMem.lastName === memberFullName) {
+            member = pastMem;
+            break;
+        }
     }
 
     let membersEl = document.querySelector('.members');
@@ -108,7 +120,8 @@ function AddMember(name) {
 
     const template = document.querySelector('#memberTmpl');
     let newMember = template.content.cloneNode(true);
-    newMember.querySelector('label').textContent = name;
+    newMember.querySelector('label').textContent = member.firstName;
+    projectMembers.push(member)
 
     membersEl.insertBefore(newMember, addMemberBtn);
 
@@ -120,7 +133,7 @@ function AddMember(name) {
 async function InviteMember() {
     const username = document.querySelector("#inviteUsername").value;
     if (username === '') {
-        alert('Please enter a valid email address.');
+        alert('You must enter a username to invite someone to your team.');
         return false;
     }
     await addPastMember(username);
@@ -153,9 +166,11 @@ async function IsValidProjectName() {
 }
 
 async function projExists(projName) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+
     try {
-        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        const response = await fetch(`/api/project/${curUser.username}/${projName}`);
         project = await response.json();
         if (project == null) {
             return false;
@@ -209,17 +224,19 @@ function ClearNewMemberFields() {
 function CreateProject() {
     const newProjectName = document.querySelector('#projectName').value;
 
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
-    const newProject = {'user': curUser, 'project-name': newProjectName, 'icon': icon,'team-members': GetProjectMembers(), 'tasks': []};
+    const newProject = {'project-name': newProjectName, 'icon': icon,'team-members': projectMembers, 'tasks': []};
     console.log(projects);
     saveProject(newProject)
 }
 
 async function saveProject(project) {
-    const curUser = localStorage.getItem('username') ?? 'public';
+    curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
     try {
-        const response = await fetch(`/api/project/${curUser}`, {
+        const response = await fetch(`/api/project/${curUser.username}`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -244,15 +261,9 @@ function updateProjectsLocal(newProject) {
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-function GetProjectMembers() {
-    let members = [];
-    memberLabels = document.querySelector('.members').getElementsByTagName('label');
-    for (member of memberLabels) {
-        members.push(member.textContent);
-    }
-    return members;
-}
-
+curUserText = localStorage.getItem('user');
+curUser = JSON.parse(curUserText);
+projectMembers.push(curUser);
 disableCreate();
 InitialLoadPastMembers();
 

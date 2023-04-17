@@ -118,7 +118,6 @@ secureApiRouter.post('/project/:user/:name', async (req, res) => {
 // deleteProjects
 secureApiRouter.delete('/projects/:user', (req, _res) => {
     const user = req.params.user;
-    console.log(user);
     DB.deleteProjects(user);
 });
 
@@ -150,10 +149,15 @@ secureApiRouter.put('/members/:user', async (req, _res) => {
 secureApiRouter.post('/members/:user/:member', async (req, res) => {
     const user = req.params.user;
     const member = req.params.member;
-    memberUser = DB.getUserFromUsername(member.username)
-    console.log(memberUser)
+    memberUser = await DB.getUserFromUsername(member);
+    console.log(memberUser);
     if (memberUser) {
-        DB.addPastMember(user, member);
+        memberUser = {'username': memberUser.username, 'firstName': memberUser.firstName, 'lastName': memberUser.lastName};
+        let pastMembers = await DB.getPastMembers(user);
+        pastMembers = pastMembers.members;
+        if (!pastMembers.includes(memberUser)) {
+            DB.addPastMember(user, memberUser);
+        }
         const members = await DB.getPastMembers(user);
         res.send(members);
     }

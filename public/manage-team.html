@@ -58,6 +58,9 @@
                         <h4>Team Members</h4>
                         <div class="form-section">
                             <div class="members">
+                                <div class="member">
+                                    <label>Me</label>
+                                </div>
 
                                 <div>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inviteModal">
@@ -117,11 +120,10 @@
                                     Invite New Team Member
                                 </h5>
                                 <p>
-                                    Please enter the email address of the person you'd like to team up with.
-                                    An email will be sent to them so that they can join your team.
+                                    Please enter the username of the person you'd like to team up with.
                                 </p>
                                 <div class="member-form">
-                                    <input type="email" class="form-control" id="inviteEmail" placeholder="example@email.com" /> 
+                                    <input type="username" class="form-control" id="inviteUsername" placeholder="Username" /> 
                                     <button type="button" onclick="inviteMember()" class="btn btn-primary" data-bs-dismiss="modal">Invite</button>
                                 </div>
                             </div>

@@ -1,7 +1,16 @@
 async function restrictAccess() {
-    const username = localStorage.getItem("username") ?? null;
+    const userText = localStorage.getItem("user") ?? null;
+    let user = null;
+    if (userText) {
+        user = JSON.parse(userText);
+    } else {
+        window.location.href = '/login.html';
+        return;
+    }
+    
+    const username = user.username;
 
-    if (username === null) {
+    if (user === null) {
         window.location.href = "/login.html";
         return;
     }

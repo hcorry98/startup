@@ -1,16 +1,18 @@
 let projName;
 let project;
 let projTasks;
+let curUser;
 
 async function getProject() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     projName = urlParams.get('project');
 
-    const curUser = localStorage.getItem('username') ?? 'public';
+    const curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
 
     try {
-        const response = await fetch(`/api/project/${curUser}/${projName}`);
+        const response = await fetch(`/api/project/${curUser.username}/${projName}`);
         project = await response.json();
     } catch {
         let projects;
@@ -52,7 +54,7 @@ function loadTasks() {
         const isCompleted = task['completed']
         nextTask.querySelector('input').checked = isCompleted;
 
-        if (task['assigned-to'] === 'Me') {
+        if (task['assigned-to'].username === curUser.username) {
             if (isCompleted || !myTasks.hasChildNodes()) {
                 myTasks.appendChild(nextTask);
             } else {
@@ -88,9 +90,11 @@ async function changeTaskState(toggleEl) {
     project['tasks'] = projTasks;
 
     let projects = [];
-    const curUser = localStorage.getItem('username') ?? 'public';
+    const curUserText = localStorage.getItem('user');
+    curUser = JSON.parse(curUserText);
+
     try {
-        const response = await fetch(`/api/project/${curUser}/${projName}`, {
+        const response = await fetch(`/api/project/${curUser.username}/${projName}`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(project),
@@ -161,7 +165,7 @@ function calcPercentages() {
         if (task['completed'] === true) {
             allCompleted++;
         }
-        if (task['assigned-to'] === 'Me') {
+        if (task['assigned-to'].username === curUser.username) {
             myTotal++;
             if (task['completed'] === true) {
                 myCompleted++;
