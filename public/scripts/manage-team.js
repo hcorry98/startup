@@ -1,6 +1,5 @@
 let project;
 let projName;
-let curUser;
 
 async function getProject() {
     const queryString = window.location.search;

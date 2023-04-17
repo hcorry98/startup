@@ -1,5 +1,3 @@
-let curUser = {};
-
 function logout() {
     fetch(`/api/auth/logout`, {
         method: 'DELETE',

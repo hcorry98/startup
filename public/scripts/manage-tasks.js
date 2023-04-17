@@ -1,7 +1,6 @@
 let project;
 let projName;
 let numTasks = 0;
-let curUser;
 
 async function getProject() {
     const queryString = window.location.search;

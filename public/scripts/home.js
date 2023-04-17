@@ -1,5 +1,3 @@
-let curUser = {};
-
 async function getName() {
     let user = await fetch(`/api/user/${curUser.username}`);
     user = await user.json();
@@ -11,7 +9,7 @@ async function toastWelcome() {
     let toastEl = document.getElementById("welcomeToast");
 
     let myToast = bootstrap.Toast.getOrCreateInstance(toastEl, {
-        delay: 3000
+        delay: 7000
     });
     const fullName = await getName();
     toastEl.querySelector(".toast-body").textContent = "Welcome " + fullName + "!";
@@ -46,7 +44,15 @@ async function LoadProjects() {
     }
 }
 
+function clearProjects() {
+    let mainEl = document.querySelector('body main');
+    while (mainEl.firstChild) {
+        mainEl.removeChild(mainEl.firstChild);
+    }
+}
+
 function displayProjects(projects) {
+    clearProjects();
     let mainEl = document.querySelector('body main');
 
     if (projects.length) {
@@ -116,6 +122,18 @@ function ParseIconPath(icon) {
     return 'assets/images/icons/' + icon + '.svg#' + icon;
 }
 
+function updateProj() {
+    if (projUpdated) {
+        LoadProjects();
+        projUpdated = false;
+        updateProj();
+    } else {
+        setTimeout(updateProj, 100);
+        return;
+    }
+}
+
 LoadProjects();
+updateProj();
 
 

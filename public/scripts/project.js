@@ -1,7 +1,6 @@
 let projName;
 let project;
 let projTasks;
-let curUser;
 
 async function getProject() {
     const queryString = window.location.search;
@@ -36,9 +35,22 @@ async function loadProject() {
     document.querySelector('#btn-new-tasks').setAttribute('href', 'manage-tasks.html?project=' + projName);
     document.querySelector('#btn-man-team').setAttribute('href', 'manage-team.html?project=' + projName);
 
+    clearTasks();
     loadTasks();
 
     updatePercentages();
+}
+
+function clearTasks() {
+    const myTasks = document.querySelectorAll('.accordion-item ul')[0];
+    const teamTasks = document.querySelectorAll('.accordion-item ul')[1];
+
+    while (myTasks.firstChild) {
+        myTasks.removeChild(myTasks.firstChild);
+    }
+    while (teamTasks.firstChild) {
+        teamTasks.removeChild(teamTasks.firstChild);
+    }
 }
 
 function loadTasks() {
@@ -83,9 +95,11 @@ async function changeTaskState(toggleEl) {
 
     if (toggleEl.checked) {
         completeTask(task);
+        
     } else {
         unfinishTask(task);
     }
+    broadcastEvent(project['team-members'], toggleEl.checked, curUser, task.textContent, projName);
 
     project['tasks'] = projTasks;
 
@@ -209,4 +223,16 @@ function manage() {
     }
 }
 
+function updateProj() {
+    if (projUpdated) {
+        loadProject();
+        projUpdated = false;
+        updateProj();
+    } else {
+        setTimeout(updateProj, 100);
+        return;
+    }
+}
+
 loadProject();
+updateProj();
