@@ -60,7 +60,7 @@ async function addPastMember(memberUsername) {
     pastMember = await fetch(`/api/user/${memberUsername}`);
 
     try {
-        const response = await fetch(`/api/members/${curUser.username}/${memberUsername}`, {
+        let response = await fetch(`/api/members/${curUser.username}/${memberUsername}`, {
             method: 'POST',
             headers: {'content-type': 'json/application'}
         });
@@ -68,6 +68,10 @@ async function addPastMember(memberUsername) {
             alert("Member not found. Please invite your team member to create an account.");
             return;
         }
+        response = await fetch(`/api/members/${memberUsername}/${curUser.username}`, {
+            method: 'POST',
+            headers: {'content-type': 'json/application'}
+        });
         const memberList = await response.json();
         const pastMembers = memberList['members'];
         localStorage.setItem('pastMembers', JSON.stringify(pastMembers));
