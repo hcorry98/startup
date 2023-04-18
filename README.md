@@ -66,6 +66,10 @@ When storing user data, we need to hash it using bcrypt before sending the passw
 
 When we open a WebSocket, we can specify the protocol based on what protocol the client is currently using. Then, the server upgrades the connection to a WebSocket connection, allowing the server to send messages to the client instead of just responses. We can keep track of the connection IDs to send messages to all players except the client who sent the message. We will also ping each client every 10 seconds to avoid the WebSocket from automatically closing.
 
+### React
+
+I learned how to take a web application written in JavaScript and convert it into a web application using React. I then learned how to deploy the application to the server for production. I learned how to create a template React application, clean up the template code, convert to React Bootstrap, populate App.jsx, create React components, and create a router. I also learned how to test and debug a React application.
+
 ## Delligator
 
 **Deployment Command:**
