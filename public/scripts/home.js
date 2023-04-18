@@ -46,8 +46,10 @@ async function LoadProjects() {
 
 function clearProjects() {
     let mainEl = document.querySelector('body main');
-    while (mainEl.firstChild) {
-        mainEl.removeChild(mainEl.firstChild);
+    var projs = mainEl.getElementsByClassName("clickable-div");
+
+    while (projs[0]) {
+        projs[0].parentNode.removeChild(projs[0]);
     }
 }
 
