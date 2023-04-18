@@ -85,6 +85,10 @@ I've learned how to utilize `div`s along with `display`s to achieve the lookout 
 
 I've learned how to alter the DOM with javascript to dynamically place and remove elements as the user interacts with my application. I've also learned how to build element templates, clone them, and then append them to a parent element. I've practiced navigating the DOM tree, altering styles and attributes of elements, as well as doing error checking and logic to ensure the user's experience is as intended. I've also practiced using the cache to load and set variables to provide temporary persistent data.
 
+***Services***
+
+I learned how to create various api endpoints to allow for various services with Node.js. I also learned how to call third party endpoints within my own application. I learned how to implement a MongoDB database to allow for persistent data. I also learned how to create a secure router to allow for authentication through user accounts and authentication tokens. Finally, I learned how to implement a websocket to allow for peer to peer communication. This allowed my application to provide live updates as well as reload necessary data when another member on the team made changes. 
+
 ### Elevator Pitch:
 
 I’ve come up with this app that allows teams to divide tasks to more easily manage a project. It’s called “Delligator”. We can set up a project on there and then assign tasks, or parts of the project, to each member in the group. That way we know exactly what portions of the group project we’re each in charge of, and we can see in real-time where everyone is at with their responsibilities. It’ll help increase productivity and avoid confusion as to who is in charge of what. It will also help improve and ease communication about the progress of our project.

@@ -442,3 +442,30 @@ footer a:hover {
         display: none;
     }
 }
+
+
+
+.quote-box {
+    max-width: 800px;
+    width: 90vw;
+    text-align: justify;
+    margin-top: 15px;
+    padding: 15px;
+    padding-bottom: 0px;
+    border-radius: 5px;
+    background-color: var(--del-gray);
+}
+  
+.quote {
+    font-style: italic;
+}
+  
+.author {
+    font-weight: bold;
+    text-align: right;
+    padding-bottom: 0.5em;
+}
+  
+.author::before {
+    content: " - ";
+}
